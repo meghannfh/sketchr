@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Sign Up</title>
+</head>
+<body>
+    <main class="index-bg">
+      <header>
+        <h1 class="nav-title"><a href="/">sketcher</a></h1>
+        <div class="btn-container">
+          <a href="/login" class="btn">Login</a>
+          <a href="/signup" class="btn">Signup</a>
+        </div>
+      </header>
+        <div>
+            <section class="sign-up-container">
+                <% if (locals.messages.errors) { %>
+                    <% messages.errors.forEach( el => { %>
+                        <div class="alert alert-danger"><%= el.msg %></div>
+                    <% }) %>    
+                <% } %>
+                <% if (locals.messages.info) { %>
+                    <% messages.info.forEach( el => { %>
+                        <div class="alert alert-info"><%= el.msg %></div>
+                    <% }) %>    
+                <% } %>
+                <form action="/signup" method="POST" class="login-signup-form sign-up">
+                    <div>
+                        <label for="userName">username</label>
+                        <input type="text" id="userName" name="userName" placeholder="user name">
+                      </div>
+                    <div>
+                      <label for="email">email</label>
+                      <input type="email" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="youremail@you.com">
+                      <div id="emailHelp">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div>
+                      <label for="password">password</label>
+                      <input type="password" id="password" name="password" placeholder="password">
+                    </div>
+                    <div>
+                        <label for="confirmPassword">confirm password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="confirm password">
+                    </div>
+                    <button type="submit" class="btn">signup</button>
+                  </form>
+            </section>
+        </div>
+    </main>
+</body>
+</html>

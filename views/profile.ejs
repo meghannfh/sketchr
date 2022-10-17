@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>profile</title>
+</head>
+<body>
+    <main>
+        <header>
+            <div class="profile-top-details">
+                <h1 class="nav-title"><a href="/">sketcher</a></h1>
+                <p>Welcome <%= user.userName %>!</p>
+            </div>
+        
+            <div>
+              <form action="/prompt/addPrompt" method="POST">
+                <div>
+                    <input type="text" id="prompt" name="prompt" placeholder="add a prompt" aria-placeholder="add a prompt">
+                </div>
+                <button type="submit" class="btn">add</button>
+              </form>
+              <button class="btn" id="add">+</button>
+              <a href="/logout" class="btn">Logout</a>
+            </div>
+        
+            </header>
+    </main>
+    
+</body>
+</html>
