@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    box-sizing: border-box;
 
 }
 
@@ -45,10 +46,11 @@
 }
 
 header {
+    width: 100vw;
+    padding: 1rem 3rem;
     position: fixed;
+    top: 0;
     right: 0;
-    left: 0;
-    padding: .3rem 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -59,8 +61,7 @@ header {
 header > div {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    gap: 20px;
+    gap: 1rem;
 }
 
 header > div > form {
@@ -90,21 +91,21 @@ header > div > form {
 }
 
 .make-post-form {
-    padding: 1rem 1rem;
+    width: 100vw;
+    padding: 1.5rem 3rem;
     background-color: rgb(196, 196, 196);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: .3rem;
     position: absolute;
-    top: -78px;
-    left: 0;
+    top: -30px;
     transition: all .3s;
     z-index: 9;
 }
 
 .make-post-form.down{
-    top: 78px;
+    top: 60px;
 }
 
 .make-post-form label {
@@ -119,7 +120,7 @@ header > div > form {
 }
 
 input, textarea, select{
-    padding: 10px 10px;
+    padding: 10px 5px;
     border-radius: 3px 3px;
     border: .5px solid rgb(53, 53, 53);
 }
@@ -217,6 +218,8 @@ li:hover span{
     margin: 0;
 }
 
+/*////////////////////////PROFILE INFORMATION//////////////////////////////*/
+
 .profile-top-details {
     display: flex;
     flex-direction: column;
@@ -225,4 +228,21 @@ li:hover span{
 
 .profile-top-details p {
     font-size: 10px;
+}
+
+.profile-content-container{
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0 3rem 0 3rem;
+    gap:1rem;
+}
+
+.profile-user-info,
+.profile-posts,
+.profile-posts-tracker {
+    background-color: #ffffff;
+    padding: .3rem .3rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }

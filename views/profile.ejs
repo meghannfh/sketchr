@@ -7,7 +7,7 @@
     <title>profile</title>
 </head>
 <body>
-    <main>
+    <main class='index-bg'>
         <header>
             <div class="profile-top-details">
                 <h1 class="nav-title"><a href="/">sketcher</a></h1>
@@ -26,7 +26,107 @@
             </div>
         
             </header>
+            <form action="/post/addPost" enctype="multipart/form-data" class="make-post-form" method="POST" id="form">
+                <div>
+                  <label for="name">prompt</label>
+                  <input type="text" name="prompt" class="input" placeholder="prompt">
+                </div>
+        
+                <div>
+                  <label for="media">media</label>
+                  <div class="container">
+                    <select name="media" id="media">
+                      <option value="">select media type</option>
+                      <option value="graphite">graphite (pencil)</option>
+                      <option value="ballpoint pen">ballpoint pen</option>
+                      <option value="brush pen">brush pen</option>
+                      <option value="marker">marker</option>
+                      <option value="colored pencils">colored pencils</option>
+                      <option value="brush markers">brush markers</option>
+                      <option value="paint markers">paint markers</option>
+                      <option value="watercolor">watercolor</option>
+                      <option value="acrylic">acrylic</option>
+                      <option value="mixed media">mixed media</option>
+                    </select>
+                  </div>
+                </div>
+        
+                <div>
+                  <label for="size">size</label>
+                  <div class="container">
+                    <select name="size" id="size">
+                      <option value="">select size</option>
+                      <option value="2 x 2">2" x 2" sticker</option>
+                      <option value="4 x 6">4" x 6" postcard</option>
+                      <option value="5 x 7">5" x 7" postcard</option>
+                      <option value="6.9 x 9.8">6.9" x 9.8" B5</option>
+                      <option value="8.27 x 11.69">8.27" x 11.69" A4</option>
+                      <option value="8.5 x 11">8.5" x 11" letter</option>
+                      <option value="8.5 x 14">8.5" x 14" legal</option>
+                      <option value="9.8 x 13.9">9.8" x 13.9" B4</option>
+                      <option value="11 x 17">11" x 17" tabloid</option>
+                    </select>
+                  </div>
+                </div>
+        
+                <div>
+                  <label for="canvas">canvas</label>
+                  <div class="container">
+                    <select name="canvas" id="canvas">
+                      <option value="">select canvas type</option>
+                      <option value="conjuration">sketchbook paper</option>
+                      <option value="conjuration">market paper</option>
+                      <option value="conjuration">canvas</option>
+                      <option value="manipulation">watercolor hard press</option>
+                      <option value="emission">watercolor cold press</option>
+                      <option value="transmutation">bristol</option>
+                      <option value="enhancement">charcoal paper</option>
+                      <option value="conjuration">iPad</option>
+                      <option value="conjuration">tablet</option>
+                    </select>
+                  </div>
+                </div>
+        
+                <div>
+                  <label for="description">description</label>
+                  <textarea class="input" name="description" placeholder="description"></textarea>
+                </div>
+          
+                <div>
+                  <label for="cloudinaryId" id="imageUpload">upload image</label>
+                  <input type="file" name="file" class="input">
+                </div>
+                
+                <button type="submit" value="Upload" class="btn" id="btn">submit</button>
+              </form>
+
+              <section class="profile-content-container">
+                <section class="profile-user-info">
+                    <div>
+                        <h5>img</h5>
+                        <h1><%= user.userName %></h1>
+                    </div>
+                    <div>
+
+                    </div>
+                </section>
+                <section class="profile-posts">
+                    <div>
+                        <h5><%= new Date().toLocaleString('default', {month: 'long'}) %>'s sketches</h5>
+                    </div>
+                    <div>
+
+                    </div>
+                </section>
+                <section class="profile-posts-tracker">
+                    <div>
+                        <h1><%= user.userName %>'s streak</h1>
+                    </div>
+                </section>
+
+              </section>
     </main>
     
+    <script src="/js/styles.js"></script>
 </body>
 </html>
