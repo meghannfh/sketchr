@@ -6,7 +6,8 @@ module.exports = {
     getProfile: async (req, res) => {
         try {
             const posts = await Post.find({ user: req.user.id });
-            res.render("profile.ejs", { posts: posts, user: req.user })
+            console.log((new Date).getMonth()+1)
+            res.render('profile.ejs', { posts: posts, user: req.user })
         } catch (err) {
             console.log(err)
         }
@@ -14,8 +15,7 @@ module.exports = {
     getFeed: async (req, res) => {
         try{
             const posts = await Post.find().sort({ createdAt: 'desc' }).lean()
-            const prompt = await Prompt.aggregate([{ $sample: { size: 1 } }])
-            res.render('feed.ejs', { posts: posts, prompt: prompt })
+            res.render('feed.ejs', { posts: posts, user: req.user })
         }catch(err){
             console.log(err)
         }
@@ -23,7 +23,7 @@ module.exports = {
     getPost: async (req, res) => {
         try{
             const post = await Post.findById(req.params.id);
-        res.render('post.ejs', { post: post })
+        res.render('post.ejs', { post: post, user: req.user })
         }catch(err){
             console.error(err)
         }
@@ -40,9 +40,10 @@ module.exports = {
                 image: result.secure_url,
                 cloudinaryId: result.public_id,
                 description: req.body.description,
+                user: req.user.id,
             });
             console.log('Post has been added!')
-            res.redirect('/feed')
+            res.redirect('/profile')
         }catch(err){
             console.log(err)
         }
@@ -53,9 +54,27 @@ module.exports = {
             await cloudinary.uploader.destroy(post.cloudinaryId)
             await Post.deleteOne({ _id: req.params.id })
             console.log('Post Deleted')
-            res.redirect('/feed')
+            res.redirect('/profile')
         }catch(err){
-            res.redirect('/feed')
+            res.redirect('/profile')
         }
-    }
+    },
+    updatePost: async (req, res) => {
+        try{
+            await Post.findById({ _id: req.params.id })
+            const id = req.params.id
+            await Post.findOneAndUpdate(
+               id,
+                { 
+                prompt: req.body.prompt,
+                media: req.body.media,
+                size: req.body.size,
+                canvas: req.body.canvas,
+             })
+            console.log('Post updated')
+            res.redirect('/profile')
+        }catch(err){
+            res.redirect('/profile')
+        }
+    },
 }

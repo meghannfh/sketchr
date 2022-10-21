@@ -47,11 +47,12 @@
 
 header {
     width: 100vw;
-    padding: 1rem 3rem;
+    padding: 1rem .3rem;
     position: fixed;
     top: 0;
     right: 0;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     z-index: 10;
@@ -61,7 +62,7 @@ header {
 header > div {
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    gap: .3rem;
 }
 
 header > div > form {
@@ -71,14 +72,14 @@ header > div > form {
 
 #add,
 #enter {
-    padding: 0 1rem;
+    padding: 0 .75rem;
     display: block;
 }
 
 .btn {
     text-align: center;
     border-radius: 5px 5px;
-    padding: .5rem 1rem;
+    padding: .3rem .5rem;
     border: none;
     font-weight: 500;
     font-size: 1rem;
@@ -99,7 +100,7 @@ header > div > form {
     flex-wrap: wrap;
     gap: .3rem;
     position: absolute;
-    top: -30px;
+    top: -285px;
     transition: all .3s;
     z-index: 9;
 }
@@ -140,20 +141,25 @@ li {
 }
 
 .postsSection{
+    display: grid;
+    min-height: 100vh;
+    place-content: center;
     padding: .75rem 1rem; 
     z-index: 1;
 }
 
 .postsList {
-    margin-top: 4.5rem;
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    gap: 1rem;
+    width: 100%;
+    gap: .5rem;
 }
 
 .post{
-    width: 150px;
-    height: 150px;
+    background-color: white;
+    width: 100px;
+    height: 100px;
     border-radius: 3px 3px;
     border: .5px solid rgb(136, 114, 114);
 }
@@ -222,8 +228,10 @@ li:hover span{
 
 .profile-top-details {
     display: flex;
-    flex-direction: column;
-    gap: 3px;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    /* gap: 2rem; */
 }
 
 .profile-top-details p {
@@ -234,15 +242,114 @@ li:hover span{
     min-height: 100vh;
     display: grid;
     place-content: center;
-    grid-template-columns: repeat(3, 1fr);
-    padding: 0 3rem 0 3rem;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 .3rem 0 .3rem;
     gap:1rem;
 }
 
+@media only screen and (max-width: 768px) {
+    .profile-content-container{
+        grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+
 .profile-user-info,
-.profile-posts,
-.profile-posts-tracker {
+.profile-posts {
+    width: 100%;
     background-color: #ffffff;
     padding: .3rem .3rem;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-info > form {
+    display: flex;
+    flex-direction: row;
+}
+
+.postsSection-profile{
+    height:auto;
+    width:100%;
+    z-index: 1;
+}
+
+.postsList-profile {
+    display: grid;
+    grid-template-columns: repeat(3, 30%);
+    justify-content: center;
+    gap: .3rem;
+}
+
+.post-profile{
+    width: 100%;
+    height: 100%;
+    border-radius: 3px 3px;
+    border: .5px solid rgb(136, 114, 114);
+}
+
+@media only screen and (min-width: 425px) {
+    .postsList-profile{
+        grid-template-columns: repeat(3, 30%);
+    }
+  }
+
+.post-title-profile {
+    font-size: 1rem;
+    letter-spacing: 0px;
+    text-align: center;
+    color: white;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    transition: all .3s ease;
+    background-color: rgba(0, 0, 0, 0.374);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+li:hover .post-title-profile{
+    cursor: pointer;
+    top: 0;
+}
+
+/*////////////////////////INDIVIDUAL POST INFORMATION//////////////////////////////*/
+.post-container{
+    padding: .3rem 1rem;
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+}
+
+.post-title{
+    padding: 0 .2rem 0 .2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+}
+
+picture {
+    position: relative;
+    background-color: white;
+}
+
+@media only screen and (min-width: 425px) {
+    
+  }
+
+.post-edit-delete-container{
+    display: flex;
+    flex-direction: row;
+    gap: .2rem;
 }

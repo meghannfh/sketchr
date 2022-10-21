@@ -3,16 +3,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <h2><%= post.prompt %></h2>
-    <picture>
-        <img src="<%= post.image%>" />
-    </picture>
-    <form action="/post/deletePost/<%= post.id %>?_method=DELETE" method="POST">
-        <button type="submit">Delete</button>
-    </form>
-    <a href="/feed">Go back</a>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/3bfd3ce9e5.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
-    
+    <main class="index-bg">
+        <header>
+            <div class="profile-top-details">
+                <div class="top-title-name">
+                  <h1 class="nav-title"><a href="/">sketcher</a></h1>
+                </div>
+                <a href="/profile" class="btn"><i class="fa-regular fa-user"></i></a>
+            </div>
+        
+            <div>
+              <a href="/logout" class="btn"><i class="fa-solid fa-right-from-bracket"></i></a>
+            </div>
+        
+          </header>
+        
+          <section class="post-container">
+            <h2 class="post-title">
+                <%= post.prompt %>
+                <%if(post.user == user.id){ %>
+                    <div class="post-edit-delete-container">
+                        <form action="/post/deletePost/<%= post.id %>?_method=DELETE" method="POST">
+                            <button type="submit" class="btn"><i class="fa-solid fa-trash"></i></button>
+                        </form>
+                        <button class="btn" id="edit"><i class="fa-regular fa-pen-to-square"></i></button>
+                    </div>
+                    <%}%>
+                </h2>
+            <picture>
+                <img src="<%= post.image%>" />
+            </picture>
+            
+            <a href="/feed" class="btn"><i class="fa-solid fa-backward"></i></a>
+
+            <!-- <form action="/post/updatePost/<%= post.id %>?_method=PUT" method="POST">
+                <button type="submit" class="btn">confirm delete</button>
+            </form> -->
+          </section>
+        </main>
+
 </body>
 </html>

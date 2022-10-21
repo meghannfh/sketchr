@@ -7,26 +7,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/3bfd3ce9e5.js" crossorigin="anonymous"></script>
     <title>hunters</title>
 </head>
 <body>
-  <main>
+  <main class='index-bg'>
     <header>
-      <h1 class="nav-title"><a href="/">sketcher</a></h1>
-
-    <div>
-      <h2>Add a prompt</h2>
-      <form action="/prompt/addPrompt" method="POST">
-        <div>
-            <label for="prompt">prompt</label>
-            <input type="text" id="prompt" name="prompt">
-        </div>
-        <button type="submit" class="btn">add</button>
-      </form>
-    </div>
-
-    <button class="btn" id="add">+</button>
-
+      <div class="profile-top-details">
+          <div class="top-title-name">
+            <h1 class="nav-title"><a href="/">sketcher</a></h1>
+            <p>Welcome <%= user.userName %>!</p>
+          </div>
+          <a href="/profile" class="btn"><i class="fa-regular fa-user"></i></a>
+      </div>
+  
+      <div>
+        <button class="btn" id="add">+</button>
+        <a href="/logout" class="btn"><i class="fa-solid fa-right-from-bracket"></i></a>
+      </div>
+  
     </header>
 
       <form action="/post/addPost" enctype="multipart/form-data" class="make-post-form" method="POST" id="form">
@@ -105,13 +104,13 @@
 
     <section class="postsSection">
       <ul class="postsList">
-          <% for(var i=0; i <posts.length; i++) {%>
-          <li class="post">
-            <a href="/post/<%= posts[i]._id%>">
-              <img src="<%= posts[i].image %>">
-              <span><%= posts[i].prompt %></span>
-            </a>
-          </li>
+          <% for(var i=0; i<posts.length; i++) {%>
+            <li class="post">
+              <a href="/post/<%= posts[i]._id%>">
+                <img src="<%= posts[i].image %>">
+                <span><%= (posts[i].createdAt).getMonth()+1%>/<%= (posts[i].createdAt).getDate()%></span>
+              </a>
+            </li>
           <% } %>
       </ul>
     </section>

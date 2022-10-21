@@ -7,9 +7,9 @@ module.exports = {
                 prompt: req.body.prompt,
               });
               console.log("prompt has been added!");
-              res.redirect("/feed");
+              res.redirect('/profile')
         }catch (err) {
             console.log(err)
         }
-    }
+    },
 }

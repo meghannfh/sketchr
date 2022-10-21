@@ -3,29 +3,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://kit.fontawesome.com/3bfd3ce9e5.js" crossorigin="anonymous"></script>
     <title>profile</title>
 </head>
 <body>
     <main class='index-bg'>
         <header>
             <div class="profile-top-details">
-                <h1 class="nav-title"><a href="/">sketcher</a></h1>
-                <p>Welcome <%= user.userName %>!</p>
+                <div class="top-title-name">
+                  <h1 class="nav-title"><a href="/">sketcher</a></h1>
+                  <p>Welcome <%= user.userName %>!</p>
+                </div>
+                <a href="/feed" class="btn"><i class="fa-solid fa-scroll"></i></a>
             </div>
         
             <div>
-              <form action="/prompt/addPrompt" method="POST">
-                <div>
-                    <input type="text" id="prompt" name="prompt" placeholder="add a prompt" aria-placeholder="add a prompt">
-                </div>
-                <button type="submit" class="btn">add</button>
-              </form>
               <button class="btn" id="add">+</button>
-              <a href="/logout" class="btn">Logout</a>
+              <a href="/logout" class="btn"><i class="fa-solid fa-right-from-bracket"></i></a>
             </div>
         
-            </header>
+          </header>
             <form action="/post/addPost" enctype="multipart/form-data" class="make-post-form" method="POST" id="form">
                 <div>
                   <label for="name">prompt</label>
@@ -74,15 +75,15 @@
                   <div class="container">
                     <select name="canvas" id="canvas">
                       <option value="">select canvas type</option>
-                      <option value="conjuration">sketchbook paper</option>
-                      <option value="conjuration">market paper</option>
-                      <option value="conjuration">canvas</option>
-                      <option value="manipulation">watercolor hard press</option>
-                      <option value="emission">watercolor cold press</option>
-                      <option value="transmutation">bristol</option>
-                      <option value="enhancement">charcoal paper</option>
-                      <option value="conjuration">iPad</option>
-                      <option value="conjuration">tablet</option>
+                      <option value="sketchbook paper">sketchbook paper</option>
+                      <option value="marker paper">marker paper</option>
+                      <option value="canvas">canvas</option>
+                      <option value="watercolor hard press">watercolor hard press</option>
+                      <option value="watercolor cold press">watercolor cold press</option>
+                      <option value="bristol">bristol</option>
+                      <option value="charcoal paper">charcoal paper</option>
+                      <option value="iPad">iPad</option>
+                      <option value="tablet">tablet</option>
                     </select>
                   </div>
                 </div>
@@ -102,28 +103,42 @@
 
               <section class="profile-content-container">
                 <section class="profile-user-info">
-                    <div>
+                    <div class="user-info">
                         <h5>img</h5>
                         <h1><%= user.userName %></h1>
+                        <form action="/prompt/addPrompt" method="POST">
+                          <div>
+                          <input type="text" id="prompt" name="prompt" placeholder="add a prompt" aria-placeholder="add a prompt">
+                          </div>
+                          <button type="submit" class="btn">add</button>
+                        </form>
                     </div>
-                    <div>
-
+                    <div class="profile-posts-tracker">
+                        <h1><%= user.userName %>'s streak</h1>
+                        <div>
+                          <ul>
+                            
+                          </ul>
+                        </div>
                     </div>
                 </section>
                 <section class="profile-posts">
                     <div>
                         <h5><%= new Date().toLocaleString('default', {month: 'long'}) %>'s sketches</h5>
                     </div>
-                    <div>
-
-                    </div>
+                    <section class="postsSection-profile">
+                      <ul class="postsList-profile">
+                          <% for(var i=0; i <posts.length; i++) {%>
+                          <li class="post-profile">
+                            <a href="/post/<%= posts[i]._id%>">
+                              <img src="<%= posts[i].image %>">
+                              <span class="post-title-profile"><%= (posts[i].createdAt).getMonth()+1%>/<%= (posts[i].createdAt).getDate()%></span>
+                            </a>
+                          </li>
+                          <% } %>
+                      </ul>
+                    </section>
                 </section>
-                <section class="profile-posts-tracker">
-                    <div>
-                        <h1><%= user.userName %>'s streak</h1>
-                    </div>
-                </section>
-
               </section>
     </main>
     
