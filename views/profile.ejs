@@ -115,24 +115,42 @@
                     </div>
                     <div class="profile-posts-tracker">
                         <h1><%= user.userName %>'s streak</h1>
-                        <div>
-                          <ul>
-                            
+                        <div class="streak-container">
+                          <ul class="days-month" id="days-month">
+                            <% let contributionDates = [] %>
+                            <% todaysDate = new Date() %>
+                            <% currMonth = todaysDate.getMonth()+1 %>
+                            <% currYear = todaysDate.getFullYear() %>
+                            <% days = new Date(currYear, currMonth, 0).getDate() %>
+                            <% for(var i=0; i <posts.length; i++) {%>
+                              <% if((posts[i].createdAt).getMonth()+1 === currMonth) {%>
+                                <% contributionDates.push((posts[i].createdAt).getDate())%>
+                              <% } %>
+                            <% } %>
+
+                            <% dates = [...new Set(contributionDates)] %>
+                              <% for(var i=1; i<=days; i++) {%>
+                                <% for (var j=0; j<=dates.length; j++){%>
+                                  <% if(dates[j] === i) {%>
+                                    <li class="days green" id="<%= i%>"></li>
+                                  <% } else {%>
+                                    <li class="days" id="<%= i%>"></li>
+                                  <% } %>
+                                <% } %>
+                              <% } %>
                           </ul>
                         </div>
                     </div>
                 </section>
                 <section class="profile-posts">
-                    <div>
-                        <h5><%= new Date().toLocaleString('default', {month: 'long'}) %>'s sketches</h5>
-                    </div>
+                    <h5><%= new Date().toLocaleString('default', {month: 'long'}) %>'s sketches</h5>
                     <section class="postsSection-profile">
                       <ul class="postsList-profile">
                           <% for(var i=0; i <posts.length; i++) {%>
                           <li class="post-profile">
                             <a href="/post/<%= posts[i]._id%>">
                               <img src="<%= posts[i].image %>">
-                              <span class="post-title-profile"><%= (posts[i].createdAt).getMonth()+1%>/<%= (posts[i].createdAt).getDate()%></span>
+                              <span class="post-title-profile"><%= (posts[i].createdAt).toLocaleString('default', { month: 'short' })%>/<%= (posts[i].createdAt).getDate()%></span>
                             </a>
                           </li>
                           <% } %>

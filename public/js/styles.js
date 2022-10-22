@@ -10,19 +10,10 @@ btn.addEventListener('click', ()=>{
     }
   })
 
-  const editBtn = document.getElementById('edit')
-  const editForm = document.getElementById('editForm')
+  // const editBtn = document.getElementById('edit')
+  // const editForm = document.getElementById('editForm')
 
-  btn.addEventListener('click', () => {
-    editForm.classList.toggle('show')
+  // btn.addEventListener('click', () => {
+  //   editForm.classList.toggle('show')
     
-  })
-
-  const currMonth = (new Date).getMonth() + 1
-  console.log(currMonth)
-
-  const aDate = (Date.now())
-  console.log(typeof aDate)
-  const aDate2 = new Date
-  console.log(aDate2)
-
+  // })

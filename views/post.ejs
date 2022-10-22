@@ -27,22 +27,30 @@
           </header>
         
           <section class="post-container">
-            <h2 class="post-title">
-                <%= post.prompt %>
-                <%if(post.user == user.id){ %>
-                    <div class="post-edit-delete-container">
-                        <form action="/post/deletePost/<%= post.id %>?_method=DELETE" method="POST">
+            <div class="content-container">
+                <div>
+                    <a href="/feed" class="btn back-btn"><i class="fa-solid fa-backward"></i></a>
+                    <h2 class="post-title">
+                        <%= post.prompt %>
+                    </h2>
+                    <%if(post.user == user.id){ %>
+                        <div class="post-edit-delete-container">
+                            <form action="/post/deletePost/<%= post.id %>?_method=DELETE" method="POST">
                             <button type="submit" class="btn"><i class="fa-solid fa-trash"></i></button>
-                        </form>
-                        <button class="btn" id="edit"><i class="fa-regular fa-pen-to-square"></i></button>
-                    </div>
+                            </form>
+                            <button class="btn" id="edit"><i class="fa-regular fa-pen-to-square"></i></button>
+                        </div>
                     <%}%>
-                </h2>
+                </div>
             <picture>
-                <img src="<%= post.image%>" />
+                <img class="ind-post-img" src="<%= post.image%>" />
             </picture>
-            
-            <a href="/feed" class="btn"><i class="fa-solid fa-backward"></i></a>
+            </div>
+            <div class="ind-post-info">
+                <p>info 1</p>
+                <p>info 1</p>
+                <p>info 1</p>
+            </div>
 
             <!-- <form action="/post/updatePost/<%= post.id %>?_method=PUT" method="POST">
                 <button type="submit" class="btn">confirm delete</button>

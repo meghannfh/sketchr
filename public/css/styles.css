@@ -140,6 +140,8 @@ li {
     overflow: hidden;
 }
 
+/*//////FEED POSTS INFROMATION/////////////////*/
+
 .postsSection{
     display: grid;
     min-height: 100vh;
@@ -149,11 +151,30 @@ li {
 }
 
 .postsList {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     width: 100%;
-    gap: .5rem;
+    gap: .3rem;
+}
+
+@media only screen and (min-width: 425px) {
+    .postsList{
+        grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+@media only screen and (min-width: 768px) {
+    .postsList{
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .postsList{
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1rem;
+    }
 }
 
 .post{
@@ -164,7 +185,29 @@ li {
     border: .5px solid rgb(136, 114, 114);
 }
 
-img{
+@media only screen and (min-width: 768px) {
+    .post{
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .post{
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .post{
+        width: 250px;
+        height: 250px;
+    }
+}
+
+.post-profile img,
+.post img{
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -250,16 +293,22 @@ li:hover span{
 @media only screen and (max-width: 768px) {
     .profile-content-container{
         grid-template-columns: repeat(1, 1fr);
+        padding: 0 1rem 0 1rem;
     }
   }
 
 
 .profile-user-info,
 .profile-posts {
+    background-color: white;
     width: 100%;
-    background-color: #ffffff;
     padding: .3rem .3rem;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.profile-user-info {
+    display: flex;
+    flex-direction: column;
 }
 
 .user-info {
@@ -273,31 +322,73 @@ li:hover span{
     flex-direction: row;
 }
 
+/*//////////PROFILE STREAK STYLES////////*/
+.days-month{
+    display: flex;
+    flex-wrap: wrap;
+    gap: .2rem;
+}
+
+.days {
+    background-color: rgb(206, 194, 194);
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    font-size: 6px;
+}
+
+.days.green {
+    background-color: #62cc90;
+}
+
+/*//////////END PROFILE STREAK STYLES////////*/
+.profile-posts{
+    border: 2px solid blue;
+    display: flex;
+    flex-direction: column;
+}
+
 .postsSection-profile{
-    height:auto;
+    display: grid;
+    place-content: center;
     width:100%;
     z-index: 1;
 }
 
 .postsList-profile {
     display: grid;
-    grid-template-columns: repeat(3, 30%);
-    justify-content: center;
-    gap: .3rem;
-}
-
-.post-profile{
+    grid-template-columns: repeat(3, 1fr);
     width: 100%;
-    height: 100%;
-    border-radius: 3px 3px;
-    border: .5px solid rgb(136, 114, 114);
+    gap: .3rem;
 }
 
 @media only screen and (min-width: 425px) {
     .postsList-profile{
-        grid-template-columns: repeat(3, 30%);
+        grid-template-columns: repeat(4, 1fr);
     }
   }
+
+@media only screen and (min-width: 768px) {
+    .postsList-profile{
+        grid-template-columns: repeat(4, 1fr);
+        gap: .5rem;
+    }
+}
+
+.post-profile{
+    width: 100px;
+    height: 100px;
+    border-radius: 3px 3px;
+    border: .5px solid rgb(136, 114, 114);
+}
+
+@media only screen and (min-width: 768px) {
+    .post-profile {
+        width: 150px;
+        height: 150px;
+    }
+  }
+
 
 .post-title-profile {
     font-size: 1rem;
@@ -324,29 +415,83 @@ li:hover .post-title-profile{
 
 /*////////////////////////INDIVIDUAL POST INFORMATION//////////////////////////////*/
 .post-container{
+    border: 2px solid red;
     padding: .3rem 1rem;
     min-height: 100vh;
     display: grid;
+    gap: .5rem;
     place-content: center;
 }
 
-.post-title{
-    padding: 0 .2rem 0 .2rem;
+.content-container{
+    border: 2px solid blue;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+@media only screen and (min-width: 768px) {
+    .content-container{
+        width: 450px;
+    }
+}
+
+.content-container > div {
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: space-between;
     background-color: white;
+    align-items: center;
+    padding: 0 .2rem 0 .2rem;
+}
+
+@media only screen and (min-width: 1024px) {
+    .post-container{
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 2rem;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .post-container{
+        padding: 0 6rem;
+    }
 }
 
 picture {
-    position: relative;
+    display: block;
+    border: 2px solid yellowgreen;
+    width: 100%;
+    height: 250px;
     background-color: white;
 }
 
-@media only screen and (min-width: 425px) {
-    
-  }
+@media only screen and (min-width: 768px) {
+    picture{
+        height: 500px;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    picture{
+        height: 550px;
+    }
+}
+
+.ind-post-img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.ind-post-info {
+    background-color: white;
+}
+
+.back-btn{
+    display: inline;
+}
+
 
 .post-edit-delete-container{
     display: flex;
