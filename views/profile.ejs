@@ -114,7 +114,7 @@
                         </form>
                     </div>
                     <div class="profile-posts-tracker">
-                        <h1><%= user.userName %>'s streak</h1>
+                        <h1><%= user.userName %>'s <%= new Date().toLocaleString('default', {month: 'long'}) %> streak</h1>
                         <div class="streak-container">
                           <ul class="days-month" id="days-month">
                             <% let contributionDates = [] %>
@@ -128,15 +128,13 @@
                               <% } %>
                             <% } %>
 
-                            <% dates = [...new Set(contributionDates)] %>
+                            <% dates = new Set(contributionDates) %>
                               <% for(var i=1; i<=days; i++) {%>
-                                <% for (var j=0; j<=dates.length; j++){%>
-                                  <% if(dates[j] === i) {%>
+                                  <% if(dates.has(i)) {%>
                                     <li class="days green" id="<%= i%>"></li>
                                   <% } else {%>
                                     <li class="days" id="<%= i%>"></li>
                                   <% } %>
-                                <% } %>
                               <% } %>
                           </ul>
                         </div>

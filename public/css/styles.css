@@ -282,6 +282,7 @@ li:hover span{
 }
 
 .profile-content-container{
+    margin-top: 3rem;
     min-height: 100vh;
     display: grid;
     place-content: center;
@@ -384,8 +385,8 @@ li:hover span{
 
 @media only screen and (min-width: 768px) {
     .post-profile {
-        width: 150px;
-        height: 150px;
+        width: 170px;
+        height: 170px;
     }
   }
 
@@ -421,6 +422,13 @@ li:hover .post-title-profile{
     display: grid;
     gap: .5rem;
     place-content: center;
+    margin-top: 3rem;
+}
+
+@media only screen and (min-width: 768px) {
+    .post-container{
+        margin-top: 3rem;
+    }
 }
 
 .content-container{
@@ -485,6 +493,8 @@ picture {
 }
 
 .ind-post-info {
+    display: flex;
+
     background-color: white;
 }
 

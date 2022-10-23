@@ -10,10 +10,3 @@ btn.addEventListener('click', ()=>{
     }
   })
 
-  // const editBtn = document.getElementById('edit')
-  // const editForm = document.getElementById('editForm')
-
-  // btn.addEventListener('click', () => {
-  //   editForm.classList.toggle('show')
-    
-  // })
