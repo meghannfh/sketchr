@@ -60,18 +60,17 @@ module.exports = {
     },
     updatePost: async (req, res) => {
         try{
-            await Post.findById({ _id: req.params.id })
-            const id = req.params.id
             await Post.findOneAndUpdate(
-               id,
+                { _id: req.params.id },
                 { 
-                prompt: req.body.prompt,
-                media: req.body.media,
-                size: req.body.size,
-                canvas: req.body.canvas,
-             })
+                    media: req.body.media,
+                    size: req.body.size,
+                    canvas: req.body.canvas,
+                    description: req.body.description,
+                 }
+              );
             console.log('Post updated')
-            res.redirect('/profile')
+            res.redirect(`/post/${req.params.id}`)
         }catch(err){
             res.redirect('/profile')
         }

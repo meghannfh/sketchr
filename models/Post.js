@@ -23,7 +23,7 @@ const PostSchema = new mongoose.Schema({
     },
     cloudinaryId: {
         type: String,
-        require: true,
+        required: true,
     },
     description: {
         type: String,

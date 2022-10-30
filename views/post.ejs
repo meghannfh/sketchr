@@ -17,10 +17,10 @@
                 <div class="top-title-name">
                   <h1 class="nav-title"><a href="/">sketcher</a></h1>
                 </div>
-                <a href="/profile" class="btn"><i class="fa-regular fa-user"></i></a>
             </div>
         
             <div>
+              <a href="/profile" class="btn"><i class="fa-regular fa-user"></i></a>
               <a href="/logout" class="btn"><i class="fa-solid fa-right-from-bracket"></i></a>
             </div>
         
@@ -47,22 +47,57 @@
             </picture>
             </div>
             <div class="ind-post-info">
-                <div>
-                    <h6>media:</h6><p><%= post.media %></p>
-                    <h6>size:</h6><p><%= post.size %></p>
-                    <h6>canvas:</h6><p><%= post.canvas %></p>
-                    <h6>description:</h6><p><%= post.description %></p>
-                </div>
-                <div>
-                    
-                </div>
+                <form action="/post/updatePost/<%= post.id %>?_method=PUT" class="post-edit-form" method="POST">
+                        <h6>media:</h6><p><%= post.media %></p>
+                        <select name="media" id="media" class="edit-inputs">
+                          <option value="">select media type</option>
+                          <option value="graphite">graphite (pencil)</option>
+                          <option value="ballpoint pen">ballpoint pen</option>
+                          <option value="brush pen">brush pen</option>
+                          <option value="marker">marker</option>
+                          <option value="colored pencils">colored pencils</option>
+                          <option value="brush markers">brush markers</option>
+                          <option value="paint markers">paint markers</option>
+                          <option value="watercolor">watercolor</option>
+                          <option value="acrylic">acrylic</option>
+                          <option value="mixed media">mixed media</option>
+                        </select>
+                        <h6>size:</h6><p><%= post.size %></p>
+                        <select name="size" id="size" class="edit-inputs">
+                            <option value="">select size</option>
+                            <option value="2 x 2">2" x 2" sticker</option>
+                            <option value="4 x 6">4" x 6" postcard</option>
+                            <option value="5 x 7">5" x 7" postcard</option>
+                            <option value="6.9 x 9.8">6.9" x 9.8" B5</option>
+                            <option value="8.27 x 11.69">8.27" x 11.69" A4</option>
+                            <option value="8.5 x 11">8.5" x 11" letter</option>
+                            <option value="8.5 x 14">8.5" x 14" legal</option>
+                            <option value="9.8 x 13.9">9.8" x 13.9" B4</option>
+                            <option value="11 x 17">11" x 17" tabloid</option>
+                          </select>
+                        <h6>canvas:</h6><p><%= post.canvas %></p>
+                        <select name="canvas" id="canvas" class="edit-inputs">
+                            <option value="">select canvas type</option>
+                            <option value="sketchbook paper">sketchbook paper</option>
+                            <option value="marker paper">marker paper</option>
+                            <option value="canvas">canvas</option>
+                            <option value="watercolor hard press">watercolor hard press</option>
+                            <option value="watercolor cold press">watercolor cold press</option>
+                            <option value="bristol">bristol</option>
+                            <option value="charcoal paper">charcoal paper</option>
+                            <option value="iPad">iPad</option>
+                            <option value="tablet">tablet</option>
+                          </select>
+                        <h6>description:</h6><p><%= post.description %></p>
+                        <textarea class="input edit-inputs" name="description" placeholder="description"></textarea>
+                        <div class="post-edit-form-btn edit-inputs">
+                            <button type="submit" class="btn" id="btn">update</button>
+                            <p id="undo-edit">cancel</p>
+                        </div>
+                </form>
             </div>
-
-            <!-- <form action="/post/updatePost/<%= post.id %>?_method=PUT" method="POST">
-                <button type="submit" class="btn">confirm delete</button>
-            </form> -->
           </section>
         </main>
-
+    <script src="/js/editPosts.js"></script>
 </body>
 </html>

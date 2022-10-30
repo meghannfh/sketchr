@@ -119,3 +119,19 @@ exports.postSignup = (req, res, next) => {
     }
   );
 };
+
+exports.editProfile = async (req, res) => {
+    try{
+        await User.findOneAndUpdate(
+            { _id: req.params.id },
+            { 
+              image: result.secure_url,
+              cloudinaryId: result.public_id,
+             }
+          );
+        console.log('Profile updated')
+        res.redirect(`/profile`)
+    }catch(err){
+        res.redirect('/profile')
+    }
+  }

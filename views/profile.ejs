@@ -18,11 +18,11 @@
                   <h1 class="nav-title"><a href="/">sketcher</a></h1>
                   <p>Welcome <%= user.userName %>!</p>
                 </div>
-                <a href="/feed" class="btn"><i class="fa-solid fa-scroll"></i></a>
             </div>
         
             <div>
               <button class="btn" id="add">+</button>
+              <a href="/feed" class="btn"><i class="fa-solid fa-scroll"></i></a>
               <a href="/logout" class="btn"><i class="fa-solid fa-right-from-bracket"></i></a>
             </div>
         
@@ -104,14 +104,23 @@
               <section class="profile-content-container">
                 <section class="profile-user-info">
                     <div class="user-info">
-                        <h5>img</h5>
+                      <div>
+                        <img src="" alt="" class="user-info-img hidden">
+                        <div class="user-info-placeholder-img">
+                          <h5><%= user.userName.slice(0, 1) %></h5>
+                          <p>edit</p>
+                        </div>
+                      </div>
+                      
+                      <div>
                         <h1><%= user.userName %></h1>
-                        <form action="/prompt/addPrompt" method="POST">
+                        <!-- <form action="/prompt/addPrompt" method="POST">
                           <div>
                           <input type="text" id="prompt" name="prompt" placeholder="add a prompt" aria-placeholder="add a prompt">
                           </div>
-                          <button type="submit" class="btn">add</button>
-                        </form>
+                          <button type="submit" class="btn">+</button>
+                        </form> -->
+                      </div>
                     </div>
                     <div class="profile-posts-tracker">
                         <h1><%= user.userName %>'s <%= new Date().toLocaleString('default', {month: 'long'}) %> streak</h1>
@@ -158,6 +167,6 @@
               </section>
     </main>
     
-    <script src="/js/styles.js"></script>
+    <script src="/js/showForm.js"></script>
 </body>
 </html>
