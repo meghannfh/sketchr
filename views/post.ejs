@@ -15,11 +15,11 @@
         <header>
             <div class="profile-top-details">
                 <div class="top-title-name">
-                  <h1 class="nav-title"><a href="/">sketcher</a></h1>
+                  <h1 class="nav-title"><a href="/">sketchr</a></h1>
                 </div>
             </div>
         
-            <div>
+            <div class="btn-container">
               <a href="/profile" class="btn"><i class="fa-regular fa-user"></i></a>
               <a href="/logout" class="btn"><i class="fa-solid fa-right-from-bracket"></i></a>
             </div>
@@ -42,9 +42,9 @@
                         </div>
                     <%}%>
                 </div>
-            <picture>
-                <img class="ind-post-img" src="<%= post.image%>" />
-            </picture>
+                <picture>
+                    <img class="ind-post-img" src="<%= post.image%>" />
+                </picture>
             </div>
             <div class="ind-post-info">
                 <form action="/post/updatePost/<%= post.id %>?_method=PUT" class="post-edit-form" method="POST">

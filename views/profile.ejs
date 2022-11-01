@@ -15,13 +15,14 @@
         <header>
             <div class="profile-top-details">
                 <div class="top-title-name">
-                  <h1 class="nav-title"><a href="/">sketcher</a></h1>
+                  <h1 class="nav-title"><a href="/">sketchr</a></h1>
                   <p>Welcome <%= user.userName %>!</p>
                 </div>
             </div>
         
-            <div>
-              <button class="btn" id="add">+</button>
+            <div class="btn-container">
+              <p class="btn" id="add">+</p>
+              <!-- <button class="btn" id="add">+</button> -->
               <a href="/feed" class="btn"><i class="fa-solid fa-scroll"></i></a>
               <a href="/logout" class="btn"><i class="fa-solid fa-right-from-bracket"></i></a>
             </div>
@@ -105,27 +106,30 @@
                 <section class="profile-user-info">
                     <div class="user-info">
                       <div>
-                        <img src="" alt="" class="user-info-img hidden">
+                          <img src="" alt="" class="user-info-img hidden">
                           <div class="user-info-placeholder-img" id="edit-img-btn">
                             <h5><%= user.userName.slice(0, 1) %></h5>
                             <p>edit</p>
                           </div>
                           <form action="/edit/<%= user.id %>?_method=PUT" class="edit-profile-img hide" id="edit-profile-img-form">
                             <input type="file" name="file" class="input">
-                            <button type="submit" value="Upload" class="btn" id="btn">+</button>
-                            <p id="undo-edit-img">x</p>
+                            <div>
+                              <button type="submit" value="Upload" class="btn" id="btn">+</button>
+                              <p id="undo-edit-img" class="btn">x</p>
+                            </div>
                           </form>
                       </div>
-                      
-                      <div>
-                        <h1 class="user-name"><%= user.userName %></h1>
-                        <!-- <form action="/prompt/addPrompt" method="POST">
-                          <div>
-                          <input type="text" id="prompt" name="prompt" placeholder="add a prompt" aria-placeholder="add a prompt">
-                          </div>
-                          <button type="submit" class="btn">+</button>
-                        </form> -->
-                      </div>
+                    
+                      <h6 class="user-name"><%= user.userName %></h6>
+                      <%if(user.id){ %>
+                      <h6 class="follow-btn">+ follow</h6>
+                      <%}%>
+                      <!-- <form action="/prompt/addPrompt" method="POST">
+                        <div>
+                        <input type="text" id="prompt" name="prompt" placeholder="add a prompt" aria-placeholder="add a prompt">
+                        </div>
+                        <button type="submit" class="btn">+</button>
+                      </form> -->
                     </div>
                     <div class="profile-posts-tracker">
                         <h1><%= user.userName %>'s <%= new Date().toLocaleString('default', {month: 'long'}) %> streak</h1>
@@ -155,7 +159,8 @@
                     </div>
                 </section>
                 <section class="profile-posts">
-                    <h5><%= new Date().toLocaleString('default', {month: 'long'}) %>'s sketches</h5>
+                  <h5>Your sketchbook</h5>
+                    <!-- <h5><%= new Date().toLocaleString('default', {month: 'long'}) %>'s sketches</h5> -->
                     <section class="postsSection-profile">
                       <ul class="postsList-profile">
                           <% for(var i=0; i <posts.length; i++) {%>
