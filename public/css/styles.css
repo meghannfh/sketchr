@@ -40,11 +40,10 @@
     }
 }
 
-
 .nav-title a{
-    font-size: small;
     text-decoration: none;
     color: black;
+    font-size: small;
 }
 
 .nav-title a:hover{
@@ -296,6 +295,16 @@ li:hover span{
     font-size: 10px;
 }
 
+@media only screen and (min-width: 768px) {
+    header {
+        padding: .5rem 1rem;
+    }
+    .top-title-name .nav-title a,
+    .profile-top-details p{
+        font-size: 1rem;
+    }
+}
+
 .profile-content-container{
     min-height: 100vh;
     display: grid;
@@ -312,21 +321,10 @@ li:hover span{
 }
 
 
-@media only screen and (min-width: 768px) {
-    .profile-content-container{
-        grid-template-columns: repeat(1, 1fr);
-        padding: 0 1rem 0 1rem;
-        gap:1rem;
-    }
-  }
-
-
 .profile-user-info,
 .profile-posts {
-    background-color: white;
     width: 100%;
     padding: .3rem .3rem;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .profile-user-info {
@@ -334,21 +332,35 @@ li:hover span{
     flex-direction: column;
 }
 
+@media only screen and (min-width: 768px) {
+    .profile-content-container{
+        grid-template-columns: repeat(1, 1fr);
+        padding: 5rem 1rem 0 1rem;
+        gap:1rem;
+    }
+
+    .profile-user-info{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+  }
+
 .user-info {
     display: flex;
     flex-direction: row;
-    align-items: center;
     gap: .5rem;
-    border: 1px solid red;
 }
 
-.user-info h1{
-    font-size: 2rem;
+.user-info > div {
+    position: relative;
     display: flex;
-    align-items: center;
-    justify-content: center;
+}
+
+.user-name{
+    font-size: 2rem;
     font-weight: 400;
-    border: 1px solid blue;
 }
 
 .user-info-img{
@@ -366,7 +378,14 @@ li:hover span{
     height: 50px;
     width: 50px;
     border-radius: 50%;
-    background-color: cadetblue;
+    background-color: #62cc90;;
+}
+
+@media only screen and (min-width: 768px) {
+    .user-info-placeholder-img{
+        height: 100px;
+        width: 100px;
+    }   
 }
 
 .user-info-placeholder-img > h5{
@@ -408,9 +427,37 @@ li:hover span{
     cursor: pointer;
 }
 
-.user-info > form {
+.edit-profile-img {
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 6;
     display: flex;
-    flex-direction: row;
+    gap: .3rem;
+}
+
+.edit-profile-img.hide{
+    display: none;
+}
+
+.user-info,
+.profile-posts-tracker{
+    background-color: white;
+    padding: .5rem;
+}
+
+.profile-posts-tracker h1{
+    text-align: center;
+    margin-bottom: .5rem;
+}
+
+@media only screen and (min-width: 768px) {
+    .user-info,
+    .profile-posts-tracker{
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        padding: 1rem;
+    }   
 }
 
 /*//////////PROFILE STREAK STYLES////////*/
@@ -428,16 +475,27 @@ li:hover span{
     font-size: 6px;
 }
 
+@media only screen and (min-width: 768px){
+    .days {
+        width: 20px;
+        height: 20px;
+    }
+}
+
 .days.green {
     background-color: #62cc90;
 }
 
-/*//////////END PROFILE STREAK STYLES////////*/
+
 .profile-posts{
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     display: flex;
     flex-direction: column;
+    text-align: center;
 }
 
+/*//////////END PROFILE STREAK STYLES////////*/
 .postsSection-profile{
     display: grid;
     place-content: center;
@@ -462,6 +520,19 @@ li:hover span{
     .postsList-profile{
         grid-template-columns: repeat(4, 1fr);
         gap: .5rem;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .postsList-profile{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        gap: .5rem;
+    }
+
+    .postsSection-profile{
+        padding: 1rem;
     }
 }
 

@@ -106,14 +106,19 @@
                     <div class="user-info">
                       <div>
                         <img src="" alt="" class="user-info-img hidden">
-                        <div class="user-info-placeholder-img">
-                          <h5><%= user.userName.slice(0, 1) %></h5>
-                          <p>edit</p>
-                        </div>
+                          <div class="user-info-placeholder-img" id="edit-img-btn">
+                            <h5><%= user.userName.slice(0, 1) %></h5>
+                            <p>edit</p>
+                          </div>
+                          <form action="/edit/<%= user.id %>?_method=PUT" class="edit-profile-img hide" id="edit-profile-img-form">
+                            <input type="file" name="file" class="input">
+                            <button type="submit" value="Upload" class="btn" id="btn">+</button>
+                            <p id="undo-edit-img">x</p>
+                          </form>
                       </div>
                       
                       <div>
-                        <h1><%= user.userName %></h1>
+                        <h1 class="user-name"><%= user.userName %></h1>
                         <!-- <form action="/prompt/addPrompt" method="POST">
                           <div>
                           <input type="text" id="prompt" name="prompt" placeholder="add a prompt" aria-placeholder="add a prompt">

@@ -5,6 +5,10 @@ const UserSchema = new mongoose.Schema({
     userName: { type: String, unique: true },
     email: { type: String, 
     unique: true},
+    joined: {
+        type: Date,
+        default: new Date,
+    },
     password: String,
     image: {
         type: String,

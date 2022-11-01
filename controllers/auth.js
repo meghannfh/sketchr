@@ -121,6 +121,7 @@ exports.postSignup = (req, res, next) => {
 };
 
 exports.editProfile = async (req, res) => {
+  const result = await cloudinary.uploader.upload(req.file.path)
     try{
         await User.findOneAndUpdate(
             { _id: req.params.id },
