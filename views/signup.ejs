@@ -15,7 +15,7 @@
           <a href="/signup" class="btn">signup</a>
         </div>
       </header>
-        <div>
+      <div class="overlay">
             <section class="sign-up-container">
                 <% if (locals.messages.errors) { %>
                     <% messages.errors.forEach( el => { %>
@@ -45,7 +45,7 @@
                         <label for="confirmPassword">confirm password</label>
                         <input type="password" id="confirmPassword" name="confirmPassword" placeholder="confirm password">
                     </div>
-                    <button type="submit" class="btn">signup</button>
+                    <button type="submit" class="btn login-signup">signup</button>
                   </form>
             </section>
         </div>

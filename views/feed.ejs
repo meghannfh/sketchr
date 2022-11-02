@@ -27,7 +27,7 @@
       </div>
   
     </header>
-
+    <div class="overlay">
       <form action="/post/addPost" enctype="multipart/form-data" class="make-post-form" method="POST" id="form">
         <div>
           <label for="name">prompt</label>
@@ -102,18 +102,19 @@
         <button type="submit" value="Upload" class="btn" id="btn">submit</button>
       </form>
 
-    <section class="postsSection">
-      <ul class="postsList">
-          <% for(var i=0; i<posts.length; i++) {%>
-            <li class="post">
-              <a href="/post/<%= posts[i]._id%>">
-                <img src="<%= posts[i].image %>">
-                <span><%= (posts[i].createdAt).getMonth()+1%>/<%= (posts[i].createdAt).getDate()%></span>
-              </a>
-            </li>
-          <% } %>
-      </ul>
-    </section>
+      <section class="postsSection">
+        <ul class="postsList">
+            <% for(var i=0; i<posts.length; i++) {%>
+              <li class="post">
+                <a href="/post/<%= posts[i]._id%>">
+                  <img src="<%= posts[i].image %>">
+                  <span><%= (posts[i].createdAt).getMonth()+1%>/<%= (posts[i].createdAt).getDate()%></span>
+                </a>
+              </li>
+            <% } %>
+        </ul>
+      </section>
+    </div>
   </main>
 
   <footer>

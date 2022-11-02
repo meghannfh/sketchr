@@ -25,7 +25,7 @@ button {
     min-height: 100vh;
     display: grid;
     place-content: center;
-    /* background-color: rgba(255, 255, 255, 0.569); */
+    background-color: rgba(255, 255, 255, 0.569);
 }
 
 .main-title{
@@ -33,15 +33,9 @@ button {
     font-weight: 700;
     display: grid;
     place-content: center;
-    color: #62cc90;
+    color: rgba(86,195,178,1);
     text-shadow: 3px 5px 2px #202020;
     -webkit-text-stroke: 1px black;
-}
-
-@media only screen and (min-width: 768px) {
-    .main-title{
-        font-size: 10rem;
-    }
 }
 
 .nav-title a{
@@ -67,7 +61,7 @@ header {
     justify-content: space-between;
     z-index: 10;
     background-color: rgb(255, 255, 255);
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
 }
 
 .btn-container {
@@ -80,11 +74,6 @@ header > div > form {
     display: flex;
     flex-direction: row;
 }
-
-/* #add,
-#enter {
-    display: block;
-} */
 
 .btn {
     text-align: center;
@@ -99,11 +88,12 @@ header > div > form {
 }
 
 .btn:hover{
-    color: #62cc90;
+    color: rgba(86,195,178,1);
     cursor: pointer;
-    /* outline: 3px solid rgb(35, 35, 44);
-    background: rgb(17, 17, 18);
-    background: linear-gradient(37deg, rgba(86,195,178,1) 8%, rgba(231,164,50,0.9993708420868347) 41%, rgba(251,134,221,1) 65%, rgba(97,60,160,1) 100%); */
+}
+
+.login-signup:hover {
+    color: antiquewhite;
 }
 
 .make-post-form {
@@ -164,53 +154,12 @@ li {
     gap: .3rem;
 }
 
-@media only screen and (min-width: 425px) {
-    .postsList{
-        grid-template-columns: repeat(4, 1fr);
-    }
-  }
-
-@media only screen and (min-width: 768px) {
-    .postsList{
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1rem;
-    }
-}
-
-@media only screen and (min-width: 1440px) {
-    .postsList{
-        grid-template-columns: repeat(5, 1fr);
-        gap: 1rem;
-    }
-}
-
 .post{
     background-color: white;
     width: 100px;
     height: 100px;
     border-radius: 3px 3px;
-    border: .5px solid rgb(136, 114, 114);
-}
-
-@media only screen and (min-width: 768px) {
-    .post{
-        width: 150px;
-        height: 150px;
-    }
-}
-
-@media only screen and (min-width: 1024px) {
-    .post{
-        width: 200px;
-        height: 200px;
-    }
-}
-
-@media only screen and (min-width: 1440px) {
-    .post{
-        width: 250px;
-        height: 250px;
-    }
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
 }
 
 .post-profile img,
@@ -257,14 +206,7 @@ li:hover span{
     padding: 2rem 1rem;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    background: linear-gradient(37deg, rgba(86,195,178,1) 8%, rgba(231,164,50,0.9993708420868347) 41%, rgba(251,134,221,1) 65%, rgba(97,60,160,1) 100%);
-}
-
-@media only screen and (min-width: 425px) {
-    .login-signup-form{
-        padding: 3rem 2rem;
-        margin: 0;
-    }
+    background-color: rgba(86,195,178,1);
 }
 
 .login-signup-form > div {
@@ -296,16 +238,6 @@ li:hover span{
     font-size: 10px;
 }
 
-@media only screen and (min-width: 768px) {
-    header {
-        padding: .5rem 1rem;
-    }
-    .top-title-name .nav-title a,
-    .profile-top-details p{
-        font-size: 1rem;
-    }
-}
-
 .profile-content-container{
     min-height: 100vh;
     display: grid;
@@ -314,13 +246,6 @@ li:hover span{
     padding-top: 3.5rem;
     gap:.3rem;
 }
-
-@media only screen and (min-width: 425px) {
-    .profile-content-container{
-        padding: 3.5rem 1rem 0 1rem;
-  }
-}
-
 
 .profile-user-info,
 .profile-posts {
@@ -331,28 +256,13 @@ li:hover span{
 .profile-user-info {
     display: flex;
     flex-direction: column;
+    gap: .5rem;
 }
-
-@media only screen and (min-width: 768px) {
-    .profile-content-container{
-        grid-template-columns: repeat(1, 1fr);
-        padding: 5rem 1rem 0 1rem;
-        gap:1rem;
-    }
-
-    .profile-user-info{
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-    }
-
-  }
 
 .user-info {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
     gap: .5rem;
 }
 
@@ -360,12 +270,19 @@ li:hover span{
     position: relative;
 }
 
+.user-info > div + div {
+    display: flex;
+    flex-direction: column;
+}
+
 .user-name{
     display: flex;
-    align-self: center;
-    justify-self: center;
     font-size: 2rem;
     font-weight: 400;
+}
+
+.user-joined-date {
+    font-size: .8rem;
 }
 
 .follow-btn{
@@ -388,22 +305,12 @@ li:hover span{
 
 .user-info-placeholder-img {
     position: relative;
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    background-color: #62cc90;;
-}
-
-@media only screen and (min-width: 768px) {
-    .user-info-placeholder-img{
-        height: 70px;
-        width: 70px;
-    }   
-
-    .user-name {
-        font-size: 1.5rem;
-        font-style: italic;
-    }
+    height: 70px;
+    width: 70px;
+    border-radius: 10px;
+    background-color: rgba(86,195,178,1);
+    /* box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; */
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
 }
 
 .user-info-placeholder-img > h5{
@@ -426,12 +333,13 @@ li:hover span{
     justify-content: center;
     background-color: #2020208f;
     color: whitesmoke;
+    font-size: 2rem;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 50%;
+    border-radius: 10px;
     visibility: hidden;
     transition: all .1s ease-in;
 }
@@ -474,14 +382,6 @@ li:hover span{
     margin-bottom: .5rem;
 }
 
-@media only screen and (min-width: 768px) {
-    .user-info,
-    .profile-posts-tracker{
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        padding: 1rem;
-    }   
-}
-
 /*//////////PROFILE STREAK STYLES////////*/
 .days-month{
     display: flex;
@@ -490,18 +390,12 @@ li:hover span{
 }
 
 .days {
-    background-color: rgb(206, 194, 194);
+    background-color: rgb(191, 191, 191);
     width: 10px;
     height: 10px;
     border-radius: 3px;
     font-size: 6px;
-}
-
-@media only screen and (min-width: 768px){
-    .days {
-        width: 20px;
-        height: 20px;
-    }
+    /* box-shadow: rgba(59, 67, 73, 0.426) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.258) -3px -3px 6px 1px inset; */
 }
 
 .days.green {
@@ -512,7 +406,14 @@ li:hover span{
 .profile-posts{
     display: flex;
     flex-direction: column;
-    text-align: center;
+    align-items: center;
+}
+
+.profile-posts h5 {
+    font-size: 2rem;
+    background-color: white;
+    padding: .3rem .5rem;
+    width: max-content;
 }
 
 /*//////////END PROFILE STREAK STYLES////////*/
@@ -530,47 +431,13 @@ li:hover span{
     gap: .3rem;
 }
 
-@media only screen and (min-width: 425px) {
-    .postsList-profile{
-        grid-template-columns: repeat(4, 1fr);
-    }
-  }
-
-@media only screen and (min-width: 768px) {
-    .postsList-profile{
-        grid-template-columns: repeat(4, 1fr);
-        gap: .5rem;
-    }
-}
-
-@media only screen and (min-width: 1024px) {
-    .postsList-profile{
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        gap: .5rem;
-    }
-
-    .postsSection-profile{
-        padding: 1rem;
-    }
-}
-
 .post-profile{
     background-color: white;
     width: 100px;
     height: 100px;
     border-radius: 3px 3px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
 }
-
-@media only screen and (min-width: 768px) {
-    .post-profile {
-        width: 170px;
-        height: 170px;
-    }
-  }
-
 
 .post-title-profile {
     font-size: 1rem;
@@ -604,35 +471,11 @@ li:hover .post-title-profile{
     place-content: center;
 }
 
-@media only screen and (min-width: 768px) {
-    .post-container{
-        padding-top: 3rem;
-    }
-}
-
-@media only screen and (min-width: 1024px) {
-    .post-container{
-        grid-template-columns: repeat(2, 1fr);
-        padding: 0 2rem;
-    }
-}
-
-@media only screen and (min-width: 1440px) {
-    .post-container{
-        padding: 0 6rem;
-    }
-}
-
 .content-container{
     width: 250px;
     display: flex;
     flex-direction: column;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-@media only screen and (min-width: 768px) {
-    .content-container{
-        width: 450px;
-    }
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
 }
 
 .content-container > div {
@@ -651,18 +494,6 @@ picture {
     background-color: white;
 }
 
-@media only screen and (min-width: 768px) {
-    picture{
-        height: 500px;
-    }
-}
-
-@media only screen and (min-width: 1440px) {
-    picture{
-        height: 550px;
-    }
-}
-
 .ind-post-img {
     object-fit: cover;
     height: 100%;
@@ -674,29 +505,13 @@ picture {
     display: flex;
     background-color: white;
     min-height: min-content;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-@media only screen and (min-width: 1024px) {
-    .ind-post-info {
-        padding: 1rem 1rem;
-    }
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 .ind-post-info .post-edit-form {
     width:100%;
     display: flex;
     flex-direction: column;
-}
-
-@media only screen and (min-width: 768px) {
-    .post-edit-form {
-       font-size: 1.4rem;
-    }
-
-    .post-edit-form h6{
-        font-size: 1.4rem;
-    }
 }
 
 .post-edit-form .edit-inputs {
@@ -721,4 +536,180 @@ picture {
     display: flex;
     flex-direction: row;
     gap: .2rem;
+}
+
+/*////////////////MEDIA QUERIES///////////////////*/
+@media only screen and (min-width: 425px) {
+    .postsList{
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .login-signup-form{
+        padding: 3rem 2rem;
+        margin: 0;
+    }
+
+    .profile-content-container{
+        padding: 3.5rem 1rem 0 1rem;
+  }
+
+  .postsList-profile{
+    grid-template-columns: repeat(4, 1fr);
+}
+}
+
+@media only screen and (min-width: 768px) {
+    .main-title{
+        font-size: 10rem;
+    }
+
+    .postsList{
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+    }
+
+    .post{
+        width: 150px;
+        height: 150px;
+    }
+
+    header {
+        padding: .5rem 1rem;
+    }
+
+    .top-title-name .nav-title a,
+    .profile-top-details p{
+        font-size: 1rem;
+    }
+
+    .profile-content-container{
+        grid-template-columns: repeat(1, 1fr);
+        padding: 5rem 1rem 0 1rem;
+        gap:1rem;
+    }
+
+    .profile-user-info{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .user-info-placeholder-img{
+        height: 100px;
+        width: 100px;
+    }   
+
+    .user-name {
+        font-size: 2.5rem;
+        font-style: italic;
+    }
+
+    .user-joined-date {
+        font-size: 1rem;
+    }
+
+    .user-info,
+    .profile-posts-tracker{
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        padding: 1rem;
+    } 
+
+    .days {
+        width: 20px;
+        height: 20px;
+    }
+
+    .postsList-profile{
+        grid-template-columns: repeat(4, 1fr);
+        gap: .5rem;
+    }
+
+    .post-profile {
+        width: 170px;
+        height: 170px;
+    }
+
+    .post-container{
+        padding-top: 3rem;
+    }
+
+    .content-container{
+        width: 450px;
+    }
+
+    picture{
+        height: 500px;
+    }
+
+    .post-edit-form {
+        font-size: 1.4rem;
+     }
+ 
+     .post-edit-form h6{
+         font-size: 1.4rem;
+     }
+
+}
+
+@media only screen and (min-width: 1024px) {
+    .post{
+        width: 200px;
+        height: 200px;
+    }
+
+    .postsList-profile{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        gap: .5rem;
+    }
+
+    .postsSection-profile{
+        padding: 1rem;
+    }
+
+    .post-container{
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 2rem;
+        gap: 2rem;
+    }
+
+    .ind-post-info {
+        padding: 1rem 1rem;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .postsList{
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1rem;
+    }
+
+    .post{
+        width: 250px;
+        height: 250px;
+    }
+
+    .profile-user-info {
+        place-content: center;
+        grid-template-columns: repeat(2, 500px);
+    }
+
+    .user-info {
+        align-items: flex-start;
+    }
+
+    .user-info-placeholder-img{
+        height: 150px;
+        width: 150px;
+    }
+
+    .post-container{
+        padding: 0 6rem;
+    }
+
+    picture{
+        height: 550px;
+    }
 }

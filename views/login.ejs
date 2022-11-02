@@ -11,10 +11,11 @@
       <header>
         <h1 class="nav-title"><a href="/">sketchr</a></h1>
         <div class="btn-container">
-          <a href="/login" class="btn">Login</a>
-          <a href="/signup" class="btn">Signup</a>
+          <a href="/login" class="btn">login</a>
+          <a href="/signup" class="btn">signup</a>
         </div>
       </header>
+      <div class="overlay">
           <section class="login-container">
             <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
             <div class="alert alert-danger"><%= el.msg %></div>
@@ -41,9 +42,10 @@
                   name="password"
                 />
               </div>
-              <button type="submit" class="btn">login</button>
+              <button type="submit" class="btn login-signup">login</button>
             </form>
           </section>
+        </div>
       </main>
 </body>
 </html>

@@ -28,6 +28,7 @@
             </div>
         
           </header>
+          <div class="overlay">
             <form action="/post/addPost" enctype="multipart/form-data" class="make-post-form" method="POST" id="form">
                 <div>
                   <label for="name">prompt</label>
@@ -109,21 +110,24 @@
                           <img src="" alt="" class="user-info-img hidden">
                           <div class="user-info-placeholder-img" id="edit-img-btn">
                             <h5><%= user.userName.slice(0, 1) %></h5>
-                            <p>edit</p>
+                            <p>add</p>
                           </div>
                           <form action="/edit/<%= user.id %>?_method=PUT" class="edit-profile-img hide" id="edit-profile-img-form">
                             <input type="file" name="file" class="input">
                             <div>
+                              <label for="cloudinaryId" id="imageUpload">upload image</label>
                               <button type="submit" value="Upload" class="btn" id="btn">+</button>
                               <p id="undo-edit-img" class="btn">x</p>
                             </div>
                           </form>
                       </div>
-                    
-                      <h6 class="user-name"><%= user.userName %></h6>
-                      <%if(user.id){ %>
-                      <h6 class="follow-btn">+ follow</h6>
-                      <%}%>
+                      <div>
+                        <h6 class="user-name"><%= user.userName %></h6>
+                        <h6 class="user-joined-date">Joined <%= (user.joined).toLocaleString('default', {month: 'long'}) %> <%= (user.joined).getFullYear() %></h6>
+                        <!-- <%if(user.id){ %>
+                        <h6 class="follow-btn">+ follow</h6>
+                        <%}%> -->
+                      </div>
                       <!-- <form action="/prompt/addPrompt" method="POST">
                         <div>
                         <input type="text" id="prompt" name="prompt" placeholder="add a prompt" aria-placeholder="add a prompt">
@@ -175,7 +179,8 @@
                     </section>
                 </section>
               </section>
-    </main>
+            </div>
+      </main>
     
     <script src="/js/showForm.js"></script>
 </body>
