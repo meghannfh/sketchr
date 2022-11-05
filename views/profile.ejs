@@ -112,10 +112,10 @@
                             <h5><%= user.userName.slice(0, 1) %></h5>
                             <p>add</p>
                           </div>
-                          <form action="/edit/<%= user.id %>?_method=PUT" class="edit-profile-img hide" id="edit-profile-img-form">
+                          <form method="POST" action="/edit/<%= user.id %>?_method=PUT" class="edit-profile-img hide" id="edit-profile-img-form">
+                            <label for="cloudinaryId" id="imageUpload">upload image</label>
                             <input type="file" name="file" class="input">
                             <div>
-                              <label for="cloudinaryId" id="imageUpload">upload image</label>
                               <button type="submit" value="Upload" class="btn" id="btn">+</button>
                               <p id="undo-edit-img" class="btn">x</p>
                             </div>

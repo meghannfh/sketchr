@@ -1,4 +1,5 @@
 const passport = require("passport");
+const cloudinary = require("../middleware/cloudinary");
 const validator = require("validator");
 const User = require("../models/User");
 
@@ -122,19 +123,21 @@ exports.postSignup = (req, res, next) => {
   );
 };
 
-exports.editProfile = async (req, res) => {
-  const result = await cloudinary.uploader.upload(req.file.path)
-    try{
-        await User.findOneAndUpdate(
-            { _id: req.params.id },
-            { 
-              image: result.secure_url,
-              cloudinaryId: result.public_id,
-             }
-          );
-        console.log('Profile updated')
-        res.redirect(`/profile`)
-    }catch(err){
-        res.redirect('/profile')
+module.exports = {
+  editProfile: async (req, res) => {
+    const result = await cloudinary.uploader.upload(req.file.path)
+      try{
+          await User.findOneAndUpdate(
+              { _id: req.params.id },
+              { 
+                image: result.secure_url,
+                cloudinaryId: result.public_id,
+               }
+            );
+          console.log('Profile updated')
+          res.redirect(`/profile`)
+      }catch(err){
+          res.redirect('/profile')
+      }
     }
-  }
+}
