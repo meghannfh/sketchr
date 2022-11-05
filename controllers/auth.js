@@ -123,8 +123,7 @@ exports.postSignup = (req, res, next) => {
   );
 };
 
-module.exports = {
-  editProfile: async (req, res) => {
+exports.editProfile = async (req, res) => {
     const result = await cloudinary.uploader.upload(req.file.path)
       try{
           await User.findOneAndUpdate(
@@ -140,4 +139,3 @@ module.exports = {
           res.redirect('/profile')
       }
     }
-}
