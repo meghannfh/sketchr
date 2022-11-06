@@ -91,9 +91,9 @@ exports.postSignup = (req, res, next) => {
   const user = new User({
     userName: req.body.userName,
     email: req.body.email,
-    password: req.body.password
-    // image: result.secure_url,
-    // cloudinaryId: result.public_id
+    password: req.body.password,
+    profileImage: '',
+    profileCloudinaryId: ''
   });
 
   User.findOne(
@@ -124,13 +124,13 @@ exports.postSignup = (req, res, next) => {
 };
 
 exports.editProfile = async (req, res) => {
-    const result = await cloudinary.uploader.upload(req.file.path)
       try{
+        const result = await cloudinary.uploader.upload(req.file.path)
           await User.findOneAndUpdate(
-              { _id: req.params.id },
+              { _id: req.user.id },
               { 
-                image: result.secure_url,
-                cloudinaryId: result.public_id,
+                profileImage: result.secure_url,
+                profileCloudinaryId: result.public_id,
                }
             );
           console.log('Profile updated')

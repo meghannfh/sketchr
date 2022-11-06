@@ -10,13 +10,13 @@ const UserSchema = new mongoose.Schema({
         default: new Date,
     },
     password: String,
-    image: {
+    profileImage: {
         type: String,
-        required: false,
+        default: '',
     },
-    cloudinaryId: {
+    profileCloudinaryId: {
         type: String,
-        required: false,
+        default: '',
     },
 });
 
