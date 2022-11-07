@@ -11,6 +11,7 @@ const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
 const postRoutes = require("./routes/posts");
 const promptRoutes = require("./routes/prompts");
+// const profilepicRoutes = require('./routes/profilepics')
 // const commentRoutes = require("./routes/comments");
 
 //Use .env file in config folder
@@ -64,6 +65,7 @@ app.use(flash())
 app.use('/', mainRoutes)
 app.use('/post', postRoutes)
 app.use('/prompt', promptRoutes)
+// app.use('/profilepic', profilepicRoutes)
 
 app.listen(process.env.PORT || PORT, () => {
     console.log(`The server is running`)
