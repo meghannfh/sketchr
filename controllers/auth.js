@@ -126,7 +126,9 @@ exports.postSignup = (req, res, next) => {
 exports.editProfile = async (req, res) => {
       try{
         const result = await cloudinary.uploader.upload(req.file.path)
-          await User.findOneAndUpdate(
+        console.log(req.body)
+        console.log(result)
+          let update = await User.findOneAndUpdate(
               { _id: req.user.id },
               { 
                 profileImage: result.secure_url,
@@ -136,6 +138,9 @@ exports.editProfile = async (req, res) => {
           console.log('Profile updated')
           res.redirect(`/profile`)
       }catch(err){
+        if (req.fileValidationError) {
+          console.log(err)
           res.redirect('/profile')
+        }
       }
     }

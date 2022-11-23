@@ -215,10 +215,6 @@ li:hover span{
     margin-bottom: 1rem;
 }
 
-.login-signup-form.sign-up{
-    margin-top: 5rem;
-}
-
 .emailHelp{
     padding: 0;
     margin: 0;
@@ -264,10 +260,17 @@ li:hover span{
     flex-direction: row;
     align-items: center;
     gap: .5rem;
+    position: relative;
 }
 
-.user-info > div {
+.profile-img-container {
     position: relative;
+    height: 100px;
+    width: 100px;
+    border-radius: 10px;
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+    background-color: rgba(86,195,178,1);
+    overflow: hidden;
 }
 
 .user-info > div + div {
@@ -293,27 +296,17 @@ li:hover span{
     border-radius: 30px 30px;
 }
 
-.user-info-img{
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-}
-
 .user-info-img.hidden{
     display: none;
 }
 
-.user-info-placeholder-img {
-    position: relative;
-    height: 70px;
-    width: 70px;
-    border-radius: 10px;
-    background-color: rgba(86,195,178,1);
-    /* box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; */
-    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+.user-info-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
-.user-info-placeholder-img > h5{
+.profile-img-container > h5{
     position: absolute;
     top: 0;
     left: 0;
@@ -327,7 +320,7 @@ li:hover span{
     text-transform: capitalize;
 }
 
-.user-info-placeholder-img > p {
+.edit-img-overlay {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -340,16 +333,12 @@ li:hover span{
     width: 100%;
     height: 100%;
     border-radius: 10px;
-    visibility: hidden;
-    transition: all .1s ease-in;
+    opacity: 0;
+    transition: .3s ease-in-out;
 }
 
-.user-info-placeholder-img:hover > p {
-    visibility: visible;
-}
-
-.user-info-placeholder-img > p:hover{
-    background-color: #2020208f;
+.profile-img-container:hover .edit-img-overlay{
+    opacity: 1;
     cursor: pointer;
 }
 
@@ -360,7 +349,10 @@ li:hover span{
     left: 0;
     z-index: 6;
     display: flex;
-    gap: .3rem;
+    padding: 1rem;
+    border: 1px solid rgb(22, 22, 22);
+    align-items: center;
+    gap: 1rem;
 }
 
 .edit-profile-img.hide{
@@ -369,12 +361,19 @@ li:hover span{
 
 .edit-profile-img> div{
     display: flex;
+    align-items: center;
+    gap: .7rem;
+}
+
+.edit-profile-img > div button * {
+    font-size: 2rem;
 }
 
 .user-info,
 .profile-posts-tracker{
     background-color: white;
     padding: .5rem;
+    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
 }
 
 .profile-posts-tracker h1{
@@ -435,7 +434,7 @@ li:hover span{
     background-color: white;
     width: 100px;
     height: 100px;
-    border-radius: 3px 3px;
+    border-radius: 10px;
     box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
 }
 
@@ -592,12 +591,7 @@ picture {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
-    }
-
-    .user-info-placeholder-img{
-        height: 100px;
-        width: 100px;
-    }   
+    }  
 
     .user-name {
         font-size: 2.5rem;
@@ -700,7 +694,7 @@ picture {
         align-items: flex-start;
     }
 
-    .user-info-placeholder-img{
+    .profile-img-container{
         height: 150px;
         width: 150px;
     }

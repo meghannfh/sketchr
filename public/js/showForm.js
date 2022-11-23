@@ -2,6 +2,7 @@ function handleAddClick(){
   const btn = document.getElementById('add')
   const form = document.getElementById('form')
   const editImgBtn = document.getElementById('edit-img-btn')
+  const editImgBtns = document.querySelectorAll('.edit-img-btns')
   const editImgForm = document.getElementById('edit-profile-img-form')
 
   btn.addEventListener('click', () => {
@@ -13,9 +14,10 @@ function handleAddClick(){
     }
   })
 
-  editImgBtn.addEventListener('click', () => {
+  editImgBtns.forEach(btn => btn.addEventListener('click', (e) => {
+    const clicked = e.target
     editImgForm.classList.toggle('hide')
-  })
+  }))
 }
 
 

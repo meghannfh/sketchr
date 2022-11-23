@@ -1,6 +1,7 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require('../models/Post')
 const Prompt = require('../models/Prompt')
+const multer = require('multer')
 
 module.exports = {
     getProfile: async (req, res) => {
@@ -30,8 +31,8 @@ module.exports = {
     addPost: async (req, res) => {
         try{
             const result = await cloudinary.uploader.upload(req.file.path)
-
-            await Post.create({
+            console.log(result)
+            let newPost = await Post.create({
                 prompt: req.body.prompt,
                 media: req.body.media,
                 size: req.body.size,
@@ -41,10 +42,12 @@ module.exports = {
                 description: req.body.description,
                 user: req.user.id,
             });
-            console.log('Post has been added!')
             res.redirect('/profile')
         }catch(err){
-            console.log(err)
+            if (req.fileValidationError) {
+                console.log(err)
+                res.redirect('/profile')
+           }
         }
     },
     deletePost: async (req, res) => {

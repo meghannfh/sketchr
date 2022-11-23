@@ -96,7 +96,7 @@
                 </div>
           
                 <div>
-                  <label for="cloudinaryId" id="imageUpload">upload image</label>
+                  <label for="cloudinaryId">upload image</label>
                   <input type="file" name="file" class="input">
                 </div>
                 
@@ -107,20 +107,23 @@
                 <section class="profile-user-info">
                     <div class="user-info">
                       <div>
-                        <% if(user.image) {%>
-                          <img src="<%= user.image %>" alt="user profile picture" class="user-info-img">
-                        <% } else {%>
-                          <div class="user-info-placeholder-img" id="edit-img-btn">
-                            <h5><%= user.userName.slice(0, 1) %></h5>
-                            <p>add</p>
-                          </div>
-                        <% } %>
-                          <form method="POST" action="/edit/<%= user.id %>?_method=PUT" class="edit-profile-img hide" id="edit-profile-img-form">
-                            <label for="profileCloudinaryId" id="imageUpload">upload image</label>
-                            <input type="file" name="file" class="input">
+                        <div class="profile-img-container">
+                            <% if(user.profileImage) {%>
+                              <img src="<%= user.profileImage %>" alt="user profile picture" class="user-info-img">
+                            <% } else {%>
+                                <h5 class="user-info-placeholder-img"><%= user.userName.slice(0, 1) %></h5>
+                            <% } %>
+                            <p class="edit-img-overlay edit-img-btns" id="edit-img-btn">edit</p>
+                        </div>
+
+
+                          <form method="POST" action="/edit/<%= user.id %>?_method=PUT" class="edit-profile-img hide" id="edit-profile-img-form" enctype="multipart/form-data">
+                            <!-- <label for="profileCloudinaryId">upload image</label> -->
+                            <input type="file" name="profileImage" class="input">
                             <div>
-                              <button type="submit" value="Upload" class="btn" id="btn">+</button>
-                              <p id="undo-edit-img" class="btn">x</p>
+                              <button type="submit" value="Upload" class="btn" id="btn"><i class="fa-solid fa-file-arrow-up"></i></button>
+                              <button type="button" id="undo-edit-img" class="edit-img-btns btn"><i class=" fa-solid fa-rotate-left"></i></button>
+                              <!-- <p id="undo-edit-img" class="btn">x</p> -->
                             </div>
                           </form>
                       </div>
