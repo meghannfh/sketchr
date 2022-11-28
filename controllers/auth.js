@@ -144,3 +144,16 @@ exports.editProfile = async (req, res) => {
         }
       }
     }
+
+exports.deleteProfilePic = async (req, res) => {
+  try{
+    let user = await User.findById({ _id: req.params.id })
+    await cloudinary.uploader.destroy(user.profileCloudinaryId)
+    // await User.deleteOne({ _id: req.params.id })
+    console.log('profile pic deleted')
+    res.redirect('/profile')
+  }catch(err){
+    console.log(err)
+    res.redirect('/profile')
+  }
+}
