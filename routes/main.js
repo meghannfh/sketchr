@@ -15,6 +15,6 @@ router.get("/logout", authController.logout);
 router.get("/signup", authController.getSignup);
 router.post("/signup", authController.postSignup);
 router.put('/edit/:id', upload.single('profileImage'), authController.editProfile)
-router.delete('/deleteProfilePic/:id', authController.deleteProfilePic)
+router.put('/deletePic/:id', authController.deleteProfilePic)
 
 module.exports = router;
