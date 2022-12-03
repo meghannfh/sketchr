@@ -116,16 +116,18 @@
                             <p class="edit-img-overlay edit-img-btns" id="edit-img-btn">edit</p>
                         </div>
 
-
-                          <form method="POST" action="/edit/<%= user.id %>?_method=PUT" class="edit-profile-img hide" id="edit-profile-img-form" enctype="multipart/form-data">
+                        <div class="edit-profile-img hide" id="edit-profile-img-form">
+                          <form method="POST" action="/edit/<%= user.id %>?_method=PUT" enctype="multipart/form-data">
                             <!-- <label for="profileCloudinaryId">upload image</label> -->
                             <input type="file" name="profileImage" class="input">
-                            <div>
-                              <button type="submit" value="Upload" class="btn" id="btn"><i class="fa-solid fa-file-arrow-up"></i></button>
-                              <button type="button" id="undo-edit-img" class="edit-img-btns btn"><i class=" fa-solid fa-rotate-left"></i></button>
-                              <button type="submit" class="btn"><i class="fa-solid fa-trash"></i></button>
-                            </div>
+                            <button type="submit" value="Upload" class="btn" id="btn"><i class="fa-solid fa-file-arrow-up"></i></button>
                           </form>
+                          <button type="button" id="undo-edit-img" class="edit-img-btns btn"><i class=" fa-solid fa-rotate-left"></i></button>
+                          <form method="POST" action="/delete/<%= user.id %>?_method=PUT" enctype="multipart/form-data">
+                            <button type="submit" class="btn"><i class="fa-solid fa-trash"></i></button>
+                          </form>
+                        </div>
+                          
                       </div>
                       <div>
                         <h6 class="user-name"><%= user.userName %></h6>
