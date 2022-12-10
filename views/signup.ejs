@@ -17,7 +17,8 @@
       </header>
       <div class="overlay">
             <section class="sign-up-container">
-                <% if (locals.messages.errors) { %>
+                <form action="/signup" method="POST" class="login-signup-form sign-up">
+                  <% if (locals.messages.errors) { %>
                     <% messages.errors.forEach( el => { %>
                         <div class="alert alert-danger"><%= el.msg %></div>
                     <% }) %>    
@@ -27,7 +28,6 @@
                         <div class="alert alert-info"><%= el.msg %></div>
                     <% }) %>    
                 <% } %>
-                <form action="/signup" method="POST" class="login-signup-form sign-up">
                     <div>
                         <label for="userName">username</label>
                         <input type="text" id="userName" name="userName" placeholder="user name">

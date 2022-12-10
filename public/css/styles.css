@@ -9,7 +9,7 @@
 /**********ERROR AND ALERT MESSAGES STYLING*************/
 
 .alert{
-    background-color: rgb(255, 0, 0);
+    background-color: rgb(251, 69, 69);
     color: white;
     text-align: center;
     font-size: 1rem;
@@ -454,8 +454,7 @@ li:hover span{
     background-color: white;
     width: 100px;
     height: 100px;
-    border-radius: 10px;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    outline: 1px solid rgb(31, 28, 28);
 }
 
 .post-title-profile {
@@ -495,6 +494,7 @@ li:hover .post-title-profile{
     display: flex;
     flex-direction: column;
     border: 1px solid #202020;
+    height: max-content;
 }
 
 .content-container > div {
@@ -561,11 +561,6 @@ picture {
 @media only screen and (min-width: 425px) {
     .postsList{
         grid-template-columns: repeat(4, 1fr);
-    }
-
-    .login-signup-form{
-        padding: 3rem 2rem;
-        margin: 0;
     }
 
     .profile-content-container{
@@ -673,6 +668,10 @@ picture {
         height: 200px;
     }
 
+    .postsList{
+        margin-top: 2rem;
+    }
+
     .postsList-profile{
         display: flex;
         flex-wrap: wrap;
@@ -699,7 +698,6 @@ picture {
 @media only screen and (min-width: 1440px) {
     .postsList{
         grid-template-columns: repeat(5, 1fr);
-        gap: 1rem;
     }
 
     .post{

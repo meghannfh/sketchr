@@ -48,7 +48,7 @@
               </div>
               <div class="ind-post-info">
                   <form action="/post/updatePost/<%= post.id %>?_method=PUT" class="post-edit-form" method="POST">
-                          <h6>artist:</h6><p><%= user.userName %></p>
+                          <h6>artist:</h6><p><%= post.user %></p>
                           <h6>media:</h6><p><%= post.media %></p>
                           <select name="media" id="media" class="edit-inputs">
                             <option value="">select media type</option>
