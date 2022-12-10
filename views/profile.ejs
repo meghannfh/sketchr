@@ -105,44 +105,49 @@
 
               <section class="profile-content-container">
                 <section class="profile-user-info">
-                    <div class="user-info">
-                      <div>
-                        <div class="profile-img-container">
-                            <% if(user.profileImage) {%>
-                              <img src="<%= user.profileImage %>" alt="user profile picture" class="user-info-img">
-                            <% } else {%>
-                                <h5 class="user-info-placeholder-img"><%= user.userName.slice(0, 1) %></h5>
-                            <% } %>
-                            <p class="edit-img-overlay edit-img-btns" id="edit-img-btn">edit</p>
-                        </div>
+                  <div class="user-pp-container">
+                    <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+                      <div class="alert alert-danger"><%= el.msg %></div>
+                      <% }) %> <% } %> <% if (locals.messages.info) { %> <%
+                      messages.info.forEach( el => { %>
+                      <div class="alert alert-info"><%= el.msg %></div>
+                      <% }) %> <% } %>
 
-                        <div class="edit-profile-img hide" id="edit-profile-img-form">
-                          <form method="POST" action="/edit/<%= user.id %>?_method=PUT" enctype="multipart/form-data">
-                            <!-- <label for="profileCloudinaryId">upload image</label> -->
-                            <input type="file" name="profileImage" class="input">
-                            <button type="submit" value="Upload" class="btn" id="btn"><i class="fa-solid fa-file-arrow-up"></i></button>
-                          </form>
-                          <button type="button" id="undo-edit-img" class="edit-img-btns btn"><i class=" fa-solid fa-rotate-left"></i></button>
-                          <form method="POST" action="/delete/<%= user.id %>?_method=PUT" enctype="multipart/form-data">
-                            <button type="submit" class="btn"><i class="fa-solid fa-trash"></i></button>
-                          </form>
-                        </div>
-                          
-                      </div>
-                      <div>
-                        <h6 class="user-name"><%= user.userName %></h6>
-                        <h6 class="user-joined-date">Joined <%= (user.joined).toLocaleString('default', {month: 'long'}) %> <%= (user.joined).getFullYear() %></h6>
-                        <!-- <%if(user.id){ %>
-                        <h6 class="follow-btn">+ follow</h6>
-                        <%}%> -->
-                      </div>
-                      <!-- <form action="/prompt/addPrompt" method="POST">
+                      <div class="user-info">
                         <div>
-                        <input type="text" id="prompt" name="prompt" placeholder="add a prompt" aria-placeholder="add a prompt">
+                          <div class="profile-img-container">
+                              <% if(user.profileImage) {%>
+                                <img src="<%= user.profileImage %>" alt="user profile picture" class="user-info-img">
+                              <% } else {%>
+                                  <h5 class="user-info-placeholder-img"><%= user.userName.slice(0, 1) %></h5>
+                              <% } %>
+                              <p class="edit-img-overlay edit-img-btns" id="edit-img-btn">edit</p>
+                          </div>
+  
+                          <div class="edit-profile-img hide" id="edit-profile-img-form">
+                            <form method="POST" action="/edit/<%= user.id %>?_method=PUT" enctype="multipart/form-data">
+  
+                              <input type="file" name="profileImage" class="input">
+                              <button type="submit" value="Upload" class="btn" id="btn"><i class="fa-solid fa-file-arrow-up"></i></button>
+                            </form>
+                            <button type="button" id="undo-edit-img" class="edit-img-btns btn"><i class=" fa-solid fa-rotate-left"></i></button>
+                            <form method="POST" action="/delete/<%= user.id %>?_method=PUT" enctype="multipart/form-data">
+                              <button type="submit" class="btn"><i class="fa-solid fa-trash"></i></button>
+                            </form>
+                          </div>
+                            
                         </div>
-                        <button type="submit" class="btn">+</button>
-                      </form> -->
-                    </div>
+                        <div>
+                          <h6 class="user-name"><%= user.userName %></h6>
+                          <h6 class="user-joined-date">Joined <%= (user.joined).toLocaleString('default', {month: 'long'}) %> <%= (user.joined).getFullYear() %></h6>
+                          <!-- <%if(user.id){ %>
+                          <h6 class="follow-btn">+ follow</h6>
+                          <%}%> -->
+                        </div>
+                      </div>
+
+                  </div>
+
                     <div class="profile-posts-tracker">
                         <h1><%= user.userName %>'s <%= new Date().toLocaleString('default', {month: 'long'}) %> streak</h1>
                         <div class="streak-container">

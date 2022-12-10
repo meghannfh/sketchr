@@ -1,6 +1,5 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require('../models/Post')
-const Prompt = require('../models/Prompt')
 const multer = require('multer')
 
 module.exports = {

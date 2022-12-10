@@ -124,6 +124,7 @@ exports.postSignup = (req, res, next) => {
 };
 
 exports.editProfile = async (req, res) => {
+  let fileErrors = req.flash('errors')
       try{
         const result = await cloudinary.uploader.upload(req.file.path)
         console.log(req.body)
@@ -139,11 +140,18 @@ exports.editProfile = async (req, res) => {
           res.redirect(`/profile`)
       }catch(err){
         if (req.fileValidationError) {
-          console.log(err)
-          res.redirect('/profile')
-        }
+          req.flash("errors", {
+            msg: "please enter a jpg, jpeg or png file type",
+          });
+          return res.redirect("../profile");
+        } else if (!req.file) {
+          req.flash("errors", {
+            msg: "please retry with a file selected",
+          });
+          return res.redirect("../profile");
       }
     }
+  }
 
 exports.deletePic = async (req, res) => {
   try{

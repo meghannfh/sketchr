@@ -6,6 +6,22 @@
 
 }
 
+/**********ERROR AND ALERT MESSAGES STYLING*************/
+
+.alert{
+    background-color: rgb(255, 0, 0);
+    color: white;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 5px;
+    padding: .2rem;
+    margin-bottom: .3rem;
+}
+
+
+/**********END ERROR AND ALERT MESSAGES STYLING*************/
+
 button {
     background-color: transparent;
 }
@@ -372,7 +388,7 @@ li:hover span{
     font-size: 2rem;
 }
 
-.user-info,
+.user-pp-container,
 .profile-posts-tracker{
     background-color: white;
     padding: .5rem;
@@ -562,6 +578,9 @@ picture {
 }
 
 @media only screen and (min-width: 768px) {
+    .alert{
+        margin-bottom: 0;
+    }
     .main-title{
         font-size: 10rem;
     }
