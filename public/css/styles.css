@@ -9,13 +9,13 @@
 /**********ERROR AND ALERT MESSAGES STYLING*************/
 
 .alert{
-    background-color: rgb(251, 69, 69);
-    color: white;
+    background-color: rgba(255, 164, 164, 0.9);
+    color: rgb(203, 0, 0);
     text-align: center;
     font-size: 1rem;
     font-weight: 500;
     border-radius: 5px;
-    padding: .2rem;
+    padding: .7rem .3rem;
     margin-bottom: .3rem;
 }
 
@@ -218,8 +218,12 @@ li:hover span{
 }
 
 .login-signup-form{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 300px;
+    padding: 1rem 1rem;
     margin: 0 .5rem;
-    padding: 2rem 1rem;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background-color: rgba(86,195,178,1);
@@ -228,7 +232,7 @@ li:hover span{
 .login-signup-form > div {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1rem;
+    gap: .3rem;
 }
 
 .emailHelp{

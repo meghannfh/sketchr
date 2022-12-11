@@ -10,7 +10,6 @@ const logger = require("morgan");
 const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
 const postRoutes = require("./routes/posts");
-const promptRoutes = require("./routes/prompts");
 // const profilepicRoutes = require('./routes/profilepics')
 // const commentRoutes = require("./routes/comments");
 
@@ -64,7 +63,6 @@ app.use(flash())
 //Set up routes for which server is listening
 app.use('/', mainRoutes)
 app.use('/post', postRoutes)
-app.use('/prompt', promptRoutes)
 // app.use('/profilepic', profilepicRoutes)
 
 app.listen(process.env.PORT || PORT, () => {
