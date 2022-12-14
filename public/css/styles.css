@@ -22,6 +22,14 @@
 
 /**********END ERROR AND ALERT MESSAGES STYLING*************/
 
+/**********BTN, TITLE, SUBTITLE FONT SIZES*************/
+.nav-title a,
+.btn,
+.pp-img-upload-btn{
+    font-size: 1rem;
+}
+/**********END BTN, TITLE, SUBTITLE FONT SIZES*************/
+
 button {
     background-color: transparent;
 }
@@ -57,7 +65,6 @@ button {
 .nav-title a{
     text-decoration: none;
     color: black;
-    font-size: small;
 }
 
 .nav-title a:hover{
@@ -86,6 +93,10 @@ header {
     gap: 1rem;
 }
 
+.desktop-nav-btns{
+    display: none;
+}
+
 header > div > form {
     display: flex;
     flex-direction: row;
@@ -96,7 +107,6 @@ header > div > form {
     border-radius: 30px 30px;
     border: none;
     font-weight: 500;
-    font-size: 1.5rem;
     display: flex;
     align-items: center;
     color: rgb(35, 35, 44);
@@ -364,17 +374,17 @@ li:hover span{
 
 .edit-profile-img {
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 6;
-    display: flex;
     padding: 1rem;
     border: 1px solid rgb(22, 22, 22);
-    align-items: center;
-    justify-content: space-evenly;
 }
 
 .edit-profile-img.hide{
@@ -382,14 +392,27 @@ li:hover span{
 }
 
 .edit-profile-img> form{
+    width: 100%;
     display: flex;
-    align-items: center;
-    gap: 1rem;
+    flex-direction: column;
+    gap: .5rem;
 }
 
-.edit-profile-img > button,
-.edit-profile-img form button {
-    font-size: 2rem;
+.pp-img-upload-btn{
+    border: 1px solid rgb(18, 18, 18);
+    padding: .4rem 0;
+    border-radius: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .3rem;
+    transition: .2s ease-in-out;
+}
+
+.pp-img-upload-btn:hover{
+    cursor: pointer;
+    background-color: rgb(56, 58, 58);
 }
 
 .user-pp-container,
@@ -563,6 +586,17 @@ picture {
 
 /*////////////////MEDIA QUERIES///////////////////*/
 @media only screen and (min-width: 425px) {
+    .nav-title a,
+    .btn,
+    .pp-img-upload-btn{
+    font-size: 1.2rem;
+    }
+
+    .edit-profile-img{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
     .postsList{
         grid-template-columns: repeat(4, 1fr);
     }
@@ -577,6 +611,11 @@ picture {
 }
 
 @media only screen and (min-width: 768px) {
+    .btn,
+    .pp-img-upload-btn{
+    font-size: 1.6rem;
+    }
+
     .alert{
         margin-bottom: 0;
     }
@@ -596,11 +635,6 @@ picture {
 
     header {
         padding: .5rem 1rem;
-    }
-
-    .top-title-name .nav-title a,
-    .profile-top-details p{
-        font-size: 1rem;
     }
 
     .profile-content-container{
@@ -667,6 +701,18 @@ picture {
 }
 
 @media only screen and (min-width: 1024px) {
+    .btn,
+    .pp-img-upload-btn{
+    font-size: 1.8rem;
+    }
+
+    .desktop-nav-btns{
+        display: flex;
+    }
+    .mobile-nav-btns{
+        display: none;
+    }
+
     .post{
         width: 200px;
         height: 200px;
