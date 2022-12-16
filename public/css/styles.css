@@ -124,7 +124,7 @@ header > div > form {
 
 .make-post-form {
     width: 100vw;
-    padding: 1.5rem 3rem;
+    padding: 1.5rem 2rem .5rem 2rem;
     background-color: rgb(196, 196, 196);
     display: flex;
     flex-direction: row;
@@ -409,11 +409,8 @@ li:hover span{
     gap: .3rem;
     transition: .2s ease-in-out;
 }
+/*//////Hover for pp-img-upload-btn on line 730 with desktop-nav-btn hover*/
 
-.pp-img-upload-btn:hover{
-    cursor: pointer;
-    background-color: rgb(56, 58, 58);
-}
 
 .user-pp-container,
 .profile-posts-tracker{
@@ -708,7 +705,53 @@ picture {
 
     .desktop-nav-btns{
         display: flex;
+        align-items: center;
     }
+    .desktop-nav-btns div {
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+
+    .desktop-nav-btns div button{
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        transition: .1s ease-in;
+    }
+
+    .desktop-nav-btns div a {
+        text-decoration: none;
+    }
+
+    .btn-subtitle-desktop {
+        position: absolute;
+        top: 3.5rem;
+        left: 0;
+        padding: .2rem 0;
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        background-color: rgb(56, 58, 58);
+        width: 100%;
+        border-radius: 5px;
+        color:white;
+        opacity: 0;
+        transition: .2s ease-in-out;
+    }
+
+    .pp-img-upload-btn:hover,
+    .desktop-nav-btns div button:hover{
+        cursor: pointer;
+        background-color: rgb(56, 58, 58);
+    }
+
+    .desktop-nav-btns div:hover .btn-subtitle-desktop{
+        opacity: 1;
+    }
+
     .mobile-nav-btns{
         display: none;
     }

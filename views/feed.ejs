@@ -20,11 +20,27 @@
           </div>
       </div>
   
-      <div class="btn-container">
-        <p class="btn" id="add">+</p>
-        <a href="/profile" class="btn"><i class="fa-regular fa-user"></i></a>
-        <a href="/logout" class="btn"><i class="fa-solid fa-right-from-bracket"></i></a>
-      </div>
+        <div class="btn-container">
+          <div class="btn-container mobile-nav-btns">
+            <button class="btn">new post</button>
+            <button class="btn">profile</button>
+            <button class="btn">logout</button>
+          </div>
+          <div class="btn-container desktop-nav-btns hide">
+            <div>
+              <button class="btn" id="add"><i class="fa-solid fa-plus"></i></button>
+              <p class="btn-subtitle-desktop">new</p>
+            </div>
+            <div>
+              <a href="/profile"><button class="btn" id="add"><i class="fa-regular fa-user"></i></button></a>
+              <p class="btn-subtitle-desktop">profile</p>
+            </div>
+            <div>
+              <a href="/logout"><button class="btn" id="add"><i class="fa-solid fa-right-from-bracket"></i></button></a>
+              <p class="btn-subtitle-desktop">logout</p>
+            </div>
+          </div>
+        </div>
   
     </header>
     <div class="overlay">
