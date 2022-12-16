@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
 
 }
@@ -25,7 +25,8 @@
 /**********BTN, TITLE, SUBTITLE FONT SIZES*************/
 .nav-title a,
 .btn,
-.pp-img-upload-btn{
+.pp-img-upload-btn,
+.main-subtitle{
     font-size: 1rem;
 }
 /**********END BTN, TITLE, SUBTITLE FONT SIZES*************/
@@ -34,32 +35,41 @@ button {
     background-color: transparent;
 }
 
-.index-bg {
-    min-height: 100vh;
+main {
     width: 100%;
-    background-size: contain;
-    background-image: url('/assets/index.png');
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #ff94d6 , #b3e5b4);
 }
 
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    min-height: 100vh;
+.hero {
     display: grid;
+    min-height: 100vh;
     place-content: center;
-    background-color: rgba(255, 255, 255, 0.569);
+}
+
+.main-title,
+.nav-title a{
+    font-family: "Lobster", serif;
 }
 
 .main-title{
-    font-size: 5rem;
-    font-weight: 700;
+    font-size: 4rem;
+    font-weight: 500;
     display: grid;
     place-content: center;
-    color: rgba(86,195,178,1);
-    text-shadow: 3px 5px 2px #202020;
-    -webkit-text-stroke: 1px black;
+    color: rgb(26, 26, 26);
+    text-align: center;
+    /* text-shadow: 1px 1px 2px #202020;
+    -webkit-text-stroke: 1px black; */
+}
+
+.main-subtitle{
+    font-weight: 400;
+    width: 320px;
+}
+
+.title-emphasis{
+    font-family: "Poppins", sans-serif;
 }
 
 .nav-title a{
@@ -79,12 +89,12 @@ header {
     top: 0;
     right: 0;
     display: flex;
+    position: relative;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     z-index: 10;
     background-color: rgb(255, 255, 255);
-    border-bottom: 1px solid #202020;;
 }
 
 .btn-container {
@@ -97,6 +107,10 @@ header {
     display: none;
 }
 
+.mobile-nav-btns a {
+    text-decoration: none;
+}
+
 header > div > form {
     display: flex;
     flex-direction: row;
@@ -106,7 +120,7 @@ header > div > form {
     text-align: center;
     border-radius: 30px 30px;
     border: none;
-    font-weight: 500;
+    font-weight: 400;
     display: flex;
     align-items: center;
     color: rgb(35, 35, 44);
@@ -175,15 +189,15 @@ li {
 
 .postsList {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     width: 100%;
     gap: .3rem;
 }
 
 .post{
     background-color: white;
-    width: 100px;
-    height: 100px;
+    width: 300px;
+    height: 300px;
     border-radius: 3px 3px;
     border: 1px solid rgb(21, 21, 21);
 }
@@ -453,6 +467,7 @@ li:hover span{
 
 .profile-posts h5 {
     font-size: 2rem;
+    font-weight: 500;
     background-color: white;
     padding: .3rem .5rem;
     width: max-content;
@@ -505,12 +520,14 @@ li:hover .post-title-profile{
 }
 
 /*////////////////////////INDIVIDUAL POST INFORMATION//////////////////////////////*/
-.post-container{
-    padding-top: 3.3rem;
+.post-content-container{
+    place-content: center;
     min-height: 100vh;
     display: grid;
-    gap: .5rem;
-    place-content: center;
+}
+.post-container{
+    display: grid;
+    gap: 1rem;
 }
 
 .content-container{
@@ -594,9 +611,9 @@ picture {
         align-items: center;
         justify-content: space-evenly;
     }
-    .postsList{
-        grid-template-columns: repeat(4, 1fr);
-    }
+    /* .postsList{
+        grid-template-columns: repeat(3, 1fr);
+    } */
 
     .profile-content-container{
         padding: 3.5rem 1rem 0 1rem;
@@ -617,17 +634,17 @@ picture {
         margin-bottom: 0;
     }
     .main-title{
-        font-size: 10rem;
+        font-size: 6rem;
     }
 
     .postsList{
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 1rem;
     }
 
     .post{
-        width: 150px;
-        height: 150px;
+        width: 200px;
+        height: 200px;
     }
 
     header {
@@ -648,7 +665,6 @@ picture {
 
     .user-name {
         font-size: 2.5rem;
-        font-style: italic;
     }
 
     .user-joined-date {
@@ -698,10 +714,10 @@ picture {
 }
 
 @media only screen and (min-width: 1024px) {
-    .btn,
+    /* .btn,
     .pp-img-upload-btn{
     font-size: 1.8rem;
-    }
+    } */
 
     .desktop-nav-btns{
         display: flex;
@@ -757,12 +773,8 @@ picture {
     }
 
     .post{
-        width: 200px;
-        height: 200px;
-    }
-
-    .postsList{
-        margin-top: 2rem;
+        width: 300px;
+        height: 300px;
     }
 
     .postsList-profile{
@@ -778,6 +790,7 @@ picture {
     }
 
     .post-container{
+        max-width: fit-content;
         grid-template-columns: repeat(2, 1fr);
         padding: 0 2rem;
         gap: 2rem;

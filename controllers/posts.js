@@ -1,5 +1,6 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require('../models/Post')
+const User = require('../models/User')
 const multer = require('multer')
 
 module.exports = {
@@ -21,10 +22,9 @@ module.exports = {
     },
     getPost: async (req, res) => {
         try{
-            const artist = await Post.find({ user: req.user.id})
-            console.log(artist.userName)
             const post = await Post.findById(req.params.id);
-        res.render('post.ejs', { post: post, user: req.user })
+            const artist = await User.findById({ _id: post.user})
+        res.render('post.ejs', { post: post, user: req.user, artist: artist })
         }catch(err){
             console.error(err)
         }

@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/styles.css">
     <script src="https://kit.fontawesome.com/3bfd3ce9e5.js" crossorigin="anonymous"></script>
     <title>profile</title>
 </head>
 <body>
-    <main class='index-bg'>
+    <main>
         <header>
             <div class="profile-top-details">
                 <div class="top-title-name">
-                  <h1 class="nav-title"><a href="/">sketchr</a></h1>
+                  <h1 class="nav-title"><a href="/">Sketchr</a></h1>
                   <p>Welcome <%= user.userName %>!</p>
                 </div>
             </div>
@@ -23,8 +23,8 @@
             <div class="btn-container">
               <div class="btn-container mobile-nav-btns">
                 <button class="btn">new post</button>
-                <button class="btn">feed</button>
-                <button class="btn">logout</button>
+                <a href="/feed"><button class="btn">feed</button></a>
+                <a href="/logout"><button class="btn">logout</button></a>
               </div>
               <div class="btn-container desktop-nav-btns hide">
                 <div>
@@ -43,7 +43,7 @@
             </div>
         
           </header>
-          <div class="overlay">
+          <section>
             <form action="/post/addPost" enctype="multipart/form-data" class="make-post-form" method="POST" id="form">
                 <div>
                   <label for="name">prompt</label>
@@ -116,7 +116,7 @@
                 </div>
                 
                 <button type="submit" value="Upload" class="btn" id="btn">submit</button>
-              </form>
+            </form>
 
               <section class="profile-content-container">
                 <section class="profile-user-info">
@@ -207,7 +207,7 @@
                     </section>
                 </section>
               </section>
-            </div>
+            </section>
       </main>
     
     <script src="/js/showForm.js"></script>
