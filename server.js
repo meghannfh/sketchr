@@ -17,7 +17,7 @@ require('dotenv').config({ path: './config/.env' });
 // Passport config
 require("./config/passport")(passport);
 
-//connect to Databast
+//connect to Database
 connectDB()
 
 //Using EJS for views
@@ -44,8 +44,8 @@ app.use(methodOverride("_method"));
 app.use(
     session({
       secret: "keyboard cat",
-      resave: false,
       saveUninitialized: false,
+      resave: false,
       // cookie: { secure: true },
       store: MongoStore.create({ mongoUrl: process.env.DB_STRING }),
     })
