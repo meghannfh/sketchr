@@ -11,112 +11,109 @@
 
 </head>
 <body>
-    <main>
-        <header>
-            <div class="profile-top-details">
-                <div class="top-title-name">
-                  <h1 class="nav-title"><a href="/">Sketchr</a></h1>
+  <header class="header">
+    <div class="profile-top-details">
+        <div class="top-title-name">
+          <h1 class="nav-title"><a href="/">Sketchr</a></h1>
+        </div>
+    </div>
+
+    <div class="btn-container">
+      <div class="btn-container mobile-nav-btns">
+        <a href="/feed"><button class="btn">feed</button></a>
+        <a href="/profile"><button class="btn">profile</button></a>
+        <a href="/logout"><button class="btn">logout</button></a>
+      </div>
+      <div class="btn-container desktop-nav-btns hide">
+        <div>
+          <a href="/feed"><button class="btn" id="add"><i class="fa-solid fa-scroll"></i></button></a>
+          <p class="btn-subtitle-desktop">feed</p>
+        </div>
+        <div>
+          <a href="/profile"><button class="btn" id="add"><i class="fa-regular fa-user"></i></button></a>
+          <p class="btn-subtitle-desktop">profile</p>
+        </div>
+        <div>
+          <a href="/logout"><button class="btn" id="add"><i class="fa-solid fa-right-from-bracket"></i></button></a>
+          <p class="btn-subtitle-desktop">logout</p>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+      <section class="post-container">
+        <div class="content-container">
+          <div>
+            <a href="/feed" class="btn back-btn"><i class="fa-solid fa-backward"></i></a>
+            <h2 class="post-title">
+                <%= post.prompt %>
+            </h2>
+            <%if(post.user == user.id){ %>
+                <div class="post-edit-delete-container">
+                    <form action="/post/deletePost/<%= post.id %>?_method=DELETE" method="POST">
+                      <button type="submit" class="btn"><i class="fa-solid fa-trash"></i></button>
+                    </form>
+                    <button class="btn" id="edit"><i class="fa-regular fa-pen-to-square"></i></button>
                 </div>
+            <%}%>
+          </div>
+          <picture>
+              <img class="ind-post-img" src="<%= post.image%>" />
+          </picture>
+        </div>
+        <div class="ind-post-info">
+          <form action="/post/updatePost/<%= post.id %>?_method=PUT" class="post-edit-form" method="POST">
+            <h6>artist:</h6><p><%= artist.userName %></p>
+            <h6>media:</h6><p><%= post.media %></p>
+            <select name="media" id="media" class="edit-inputs">
+              <option value="">select media type</option>
+              <option value="graphite">graphite (pencil)</option>
+              <option value="ballpoint pen">ballpoint pen</option>
+              <option value="brush pen">brush pen</option>
+              <option value="marker">marker</option>
+              <option value="colored pencils">colored pencils</option>
+              <option value="brush markers">brush markers</option>
+              <option value="paint markers">paint markers</option>
+              <option value="watercolor">watercolor</option>
+              <option value="acrylic">acrylic</option>
+              <option value="mixed media">mixed media</option>
+            </select>
+            <h6>size:</h6><p><%= post.size %></p>
+            <select name="size" id="size" class="edit-inputs">
+                <option value="">select size</option>
+                <option value="2 x 2">2" x 2" sticker</option>
+                <option value="4 x 6">4" x 6" postcard</option>
+                <option value="5 x 7">5" x 7" postcard</option>
+                <option value="6.9 x 9.8">6.9" x 9.8" B5</option>
+                <option value="8.27 x 11.69">8.27" x 11.69" A4</option>
+                <option value="8.5 x 11">8.5" x 11" letter</option>
+                <option value="8.5 x 14">8.5" x 14" legal</option>
+                <option value="9.8 x 13.9">9.8" x 13.9" B4</option>
+                <option value="11 x 17">11" x 17" tabloid</option>
+              </select>
+            <h6>canvas:</h6><p><%= post.canvas %></p>
+            <select name="canvas" id="canvas" class="edit-inputs">
+                <option value="">select canvas type</option>
+                <option value="sketchbook paper">sketchbook paper</option>
+                <option value="marker paper">marker paper</option>
+                <option value="canvas">canvas</option>
+                <option value="watercolor hard press">watercolor hard press</option>
+                <option value="watercolor cold press">watercolor cold press</option>
+                <option value="bristol">bristol</option>
+                <option value="charcoal paper">charcoal paper</option>
+                <option value="iPad">iPad</option>
+                <option value="tablet">tablet</option>
+              </select>
+            <h6>description:</h6><p><%= post.description %></p>
+            <textarea class="input edit-inputs" name="description" placeholder="description"></textarea>
+            <div class="post-edit-form-btn edit-inputs">
+                <button type="submit" class="btn" id="btn">update</button>
+                <button type="button" class="btn" id="undo-edit">cancel</button>
             </div>
-        
-            <div class="btn-container">
-              <div class="btn-container mobile-nav-btns">
-                <a href="/feed"><button class="btn">feed</button></a>
-                <a href="/profile"><button class="btn">profile</button></a>
-                <a href="/logout"><button class="btn">logout</button></a>
-              </div>
-              <div class="btn-container desktop-nav-btns hide">
-                <div>
-                  <a href="/feed"><button class="btn" id="add"><i class="fa-solid fa-scroll"></i></button></a>
-                  <p class="btn-subtitle-desktop">feed</p>
-                </div>
-                <div>
-                  <a href="/profile"><button class="btn" id="add"><i class="fa-regular fa-user"></i></button></a>
-                  <p class="btn-subtitle-desktop">profile</p>
-                </div>
-                <div>
-                  <a href="/logout"><button class="btn" id="add"><i class="fa-solid fa-right-from-bracket"></i></button></a>
-                  <p class="btn-subtitle-desktop">logout</p>
-                </div>
-              </div>
-            </div>
-        
-          </header>
-          <section class="post-content-container">
-            <section class="post-container">
-              <div class="content-container">
-                  <div>
-                      <a href="/feed" class="btn back-btn"><i class="fa-solid fa-backward"></i></a>
-                      <h2 class="post-title">
-                          <%= post.prompt %>
-                      </h2>
-                      <%if(post.user == user.id){ %>
-                          <div class="post-edit-delete-container">
-                              <form action="/post/deletePost/<%= post.id %>?_method=DELETE" method="POST">
-                                <button type="submit" class="btn"><i class="fa-solid fa-trash"></i></button>
-                              </form>
-                              <button class="btn" id="edit"><i class="fa-regular fa-pen-to-square"></i></button>
-                          </div>
-                      <%}%>
-                  </div>
-                  <picture>
-                      <img class="ind-post-img" src="<%= post.image%>" />
-                  </picture>
-              </div>
-              <div class="ind-post-info">
-                  <form action="/post/updatePost/<%= post.id %>?_method=PUT" class="post-edit-form" method="POST">
-                          <h6>artist:</h6><p><%= artist.userName %></p>
-                          <h6>media:</h6><p><%= post.media %></p>
-                          <select name="media" id="media" class="edit-inputs">
-                            <option value="">select media type</option>
-                            <option value="graphite">graphite (pencil)</option>
-                            <option value="ballpoint pen">ballpoint pen</option>
-                            <option value="brush pen">brush pen</option>
-                            <option value="marker">marker</option>
-                            <option value="colored pencils">colored pencils</option>
-                            <option value="brush markers">brush markers</option>
-                            <option value="paint markers">paint markers</option>
-                            <option value="watercolor">watercolor</option>
-                            <option value="acrylic">acrylic</option>
-                            <option value="mixed media">mixed media</option>
-                          </select>
-                          <h6>size:</h6><p><%= post.size %></p>
-                          <select name="size" id="size" class="edit-inputs">
-                              <option value="">select size</option>
-                              <option value="2 x 2">2" x 2" sticker</option>
-                              <option value="4 x 6">4" x 6" postcard</option>
-                              <option value="5 x 7">5" x 7" postcard</option>
-                              <option value="6.9 x 9.8">6.9" x 9.8" B5</option>
-                              <option value="8.27 x 11.69">8.27" x 11.69" A4</option>
-                              <option value="8.5 x 11">8.5" x 11" letter</option>
-                              <option value="8.5 x 14">8.5" x 14" legal</option>
-                              <option value="9.8 x 13.9">9.8" x 13.9" B4</option>
-                              <option value="11 x 17">11" x 17" tabloid</option>
-                            </select>
-                          <h6>canvas:</h6><p><%= post.canvas %></p>
-                          <select name="canvas" id="canvas" class="edit-inputs">
-                              <option value="">select canvas type</option>
-                              <option value="sketchbook paper">sketchbook paper</option>
-                              <option value="marker paper">marker paper</option>
-                              <option value="canvas">canvas</option>
-                              <option value="watercolor hard press">watercolor hard press</option>
-                              <option value="watercolor cold press">watercolor cold press</option>
-                              <option value="bristol">bristol</option>
-                              <option value="charcoal paper">charcoal paper</option>
-                              <option value="iPad">iPad</option>
-                              <option value="tablet">tablet</option>
-                            </select>
-                          <h6>description:</h6><p><%= post.description %></p>
-                          <textarea class="input edit-inputs" name="description" placeholder="description"></textarea>
-                          <div class="post-edit-form-btn edit-inputs">
-                              <button type="submit" class="btn" id="btn">update</button>
-                              <button type="button" class="btn" id="undo-edit">cancel</button>
-                          </div>
-                  </form>
-              </div>
-            </section>
-          </section>
-        </main>
-    <script src="/js/editPosts.js"></script>
+          </form>
+        </div>
+      </section>
+  </main>
+  <script src="/js/editPosts.js"></script>
 </body>
 </html>

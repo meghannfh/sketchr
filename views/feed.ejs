@@ -11,129 +11,124 @@
     <title>hunters</title>
 </head>
 <body>
+  <header class="header">
+    <div class="profile-top-details">
+      <div class="top-title-name">
+        <h1 class="nav-title"><a href="/">Sketchr</a></h1>
+        <p>Welcome <%= user.userName %>!</p>
+      </div>
+    </div>
+    <div class="btn-container">
+      <div class="btn-container mobile-nav-btns">
+        <button class="btn">new post</button>
+        <a href="/profile"><button class="btn">profile</button></a>
+        <a href="/logout"><button class="btn">logout</button></a>
+      </div>
+      <div class="btn-container desktop-nav-btns hide">
+        <div>
+          <button class="btn" id="add"><i class="fa-solid fa-plus"></i></button>
+          <p class="btn-subtitle-desktop">new</p>
+        </div>
+        <div>
+          <a href="/profile"><button class="btn" id="add"><i class="fa-regular fa-user"></i></button></a>
+          <p class="btn-subtitle-desktop">profile</p>
+        </div>
+        <div>
+          <a href="/logout"><button class="btn" id="add"><i class="fa-solid fa-right-from-bracket"></i></button></a>
+          <p class="btn-subtitle-desktop">logout</p>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section>
+    <form action="/post/addPost" enctype="multipart/form-data" class="make-post-form" method="POST" id="form">
+      <div>
+        <label for="name">prompt</label>
+        <input type="text" name="prompt" class="input" placeholder="prompt">
+      </div>
+
+      <div>
+        <label for="media">media</label>
+        <div class="container">
+          <select name="media" id="media">
+            <option value="">select media type</option>
+            <option value="graphite">graphite (pencil)</option>
+            <option value="ballpoint pen">ballpoint pen</option>
+            <option value="brush pen">brush pen</option>
+            <option value="marker">marker</option>
+            <option value="colored pencils">colored pencils</option>
+            <option value="brush markers">brush markers</option>
+            <option value="paint markers">paint markers</option>
+            <option value="watercolor">watercolor</option>
+            <option value="acrylic">acrylic</option>
+            <option value="mixed media">mixed media</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label for="size">size</label>
+        <div class="container">
+          <select name="size" id="size">
+            <option value="">select size</option>
+            <option value="2 x 2">2" x 2" sticker</option>
+            <option value="4 x 6">4" x 6" postcard</option>
+            <option value="5 x 7">5" x 7" postcard</option>
+            <option value="6.9 x 9.8">6.9" x 9.8" B5</option>
+            <option value="8.27 x 11.69">8.27" x 11.69" A4</option>
+            <option value="8.5 x 11">8.5" x 11" letter</option>
+            <option value="8.5 x 14">8.5" x 14" legal</option>
+            <option value="9.8 x 13.9">9.8" x 13.9" B4</option>
+            <option value="11 x 17">11" x 17" tabloid</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label for="canvas">canvas</label>
+        <div class="container">
+          <select name="canvas" id="canvas">
+            <option value="">select canvas type</option>
+            <option value="sketchbook paper">sketchbook paper</option>
+            <option value="market paper">market paper</option>
+            <option value="canvas">canvas</option>
+            <option value="watercolor hard press">watercolor hard press</option>
+            <option value="watercolor cold press">watercolor cold press</option>
+            <option value="bristol">bristol</option>
+            <option value="charcoal paper">charcoal paper</option>
+            <option value="iPad">iPad</option>
+            <option value="tablet">tablet</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label for="description">description</label>
+        <textarea class="input" name="description" placeholder="description"></textarea>
+      </div>
+
+      <div>
+        <label for="cloudinaryId" id="imageUpload">upload image</label>
+        <input type="file" name="file" class="input">
+      </div>
+      
+      <button type="submit" value="Upload" class="btn" id="btn">submit</button>
+    </form>
+  </section>
   <main>
-    <header>
-      <div class="profile-top-details">
-        <div class="top-title-name">
-          <h1 class="nav-title"><a href="/">Sketchr</a></h1>
-          <p>Welcome <%= user.userName %>!</p>
-        </div>
-      </div>
-  
-      <div class="btn-container">
-        <div class="btn-container mobile-nav-btns">
-          <button class="btn">new post</button>
-          <a href="/profile"><button class="btn">profile</button></a>
-          <a href="/logout"><button class="btn">logout</button></a>
-        </div>
-        <div class="btn-container desktop-nav-btns hide">
-          <div>
-            <button class="btn" id="add"><i class="fa-solid fa-plus"></i></button>
-            <p class="btn-subtitle-desktop">new</p>
-          </div>
-          <div>
-            <a href="/profile"><button class="btn" id="add"><i class="fa-regular fa-user"></i></button></a>
-            <p class="btn-subtitle-desktop">profile</p>
-          </div>
-          <div>
-            <a href="/logout"><button class="btn" id="add"><i class="fa-solid fa-right-from-bracket"></i></button></a>
-            <p class="btn-subtitle-desktop">logout</p>
-          </div>
-        </div>
-      </div>
-    </header>
-    <section>
-      <form action="/post/addPost" enctype="multipart/form-data" class="make-post-form" method="POST" id="form">
-        <div>
-          <label for="name">prompt</label>
-          <input type="text" name="prompt" class="input" placeholder="prompt">
-        </div>
-
-        <div>
-          <label for="media">media</label>
-          <div class="container">
-            <select name="media" id="media">
-              <option value="">select media type</option>
-              <option value="graphite">graphite (pencil)</option>
-              <option value="ballpoint pen">ballpoint pen</option>
-              <option value="brush pen">brush pen</option>
-              <option value="marker">marker</option>
-              <option value="colored pencils">colored pencils</option>
-              <option value="brush markers">brush markers</option>
-              <option value="paint markers">paint markers</option>
-              <option value="watercolor">watercolor</option>
-              <option value="acrylic">acrylic</option>
-              <option value="mixed media">mixed media</option>
-            </select>
-          </div>
-        </div>
-
-        <div>
-          <label for="size">size</label>
-          <div class="container">
-            <select name="size" id="size">
-              <option value="">select size</option>
-              <option value="2 x 2">2" x 2" sticker</option>
-              <option value="4 x 6">4" x 6" postcard</option>
-              <option value="5 x 7">5" x 7" postcard</option>
-              <option value="6.9 x 9.8">6.9" x 9.8" B5</option>
-              <option value="8.27 x 11.69">8.27" x 11.69" A4</option>
-              <option value="8.5 x 11">8.5" x 11" letter</option>
-              <option value="8.5 x 14">8.5" x 14" legal</option>
-              <option value="9.8 x 13.9">9.8" x 13.9" B4</option>
-              <option value="11 x 17">11" x 17" tabloid</option>
-            </select>
-          </div>
-        </div>
-
-        <div>
-          <label for="canvas">canvas</label>
-          <div class="container">
-            <select name="canvas" id="canvas">
-              <option value="">select canvas type</option>
-              <option value="sketchbook paper">sketchbook paper</option>
-              <option value="market paper">market paper</option>
-              <option value="canvas">canvas</option>
-              <option value="watercolor hard press">watercolor hard press</option>
-              <option value="watercolor cold press">watercolor cold press</option>
-              <option value="bristol">bristol</option>
-              <option value="charcoal paper">charcoal paper</option>
-              <option value="iPad">iPad</option>
-              <option value="tablet">tablet</option>
-            </select>
-          </div>
-        </div>
-
-        <div>
-          <label for="description">description</label>
-          <textarea class="input" name="description" placeholder="description"></textarea>
-        </div>
-  
-        <div>
-          <label for="cloudinaryId" id="imageUpload">upload image</label>
-          <input type="file" name="file" class="input">
-        </div>
-        
-        <button type="submit" value="Upload" class="btn" id="btn">submit</button>
-      </form>
-
-      <section class="postsSection">
-        <ul class="postsList">
-            <% for(var i=0; i<posts.length; i++) {%>
-              <li class="post">
-                <a href="/post/<%= posts[i]._id%>">
-                  <img src="<%= posts[i].image %>">
-                  <span><%= (posts[i].createdAt).getMonth()+1%>/<%= (posts[i].createdAt).getDate()%></span>
-                </a>
-              </li>
-            <% } %>
-        </ul>
-      </section>
+    <section class="postsSection">
+      <ul class="postsList">
+          <% for(var i=0; i<posts.length; i++) {%>
+            <li class="post">
+              <a href="/post/<%= posts[i]._id%>">
+                <img src="<%= posts[i].image %>">
+                <span class="post-title-profile"><%= (posts[i].createdAt).getMonth()+1%>/<%= (posts[i].createdAt).getDate()%></span>
+              </a>
+            </li>
+          <% } %>
+      </ul>
     </section>
   </main>
-
-  <footer>
-  </footer>
   <script src="/js/showForm.js"></script>
 </body>
 </html>

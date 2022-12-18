@@ -3,7 +3,14 @@
     padding: 0;
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
+}
 
+body {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    background: radial-gradient(circle at top, #ff94d6 , #b3e5b4);
 }
 
 /**********ERROR AND ALERT MESSAGES STYLING*************/
@@ -36,15 +43,14 @@ button {
 }
 
 main {
+    position: relative;
     width: 100%;
-    min-height: 100vh;
-    background: radial-gradient(circle at top, #ff94d6 , #b3e5b4);
 }
 
-.hero {
-    display: grid;
-    min-height: 100vh;
-    place-content: center;
+.hero > div {
+    width: 550px;
+    display: flex;
+    flex-direction: column;
 }
 
 .main-title,
@@ -53,23 +59,28 @@ main {
 }
 
 .main-title{
-    font-size: 4rem;
+    font-size: 2rem;
     font-weight: 500;
-    display: grid;
-    place-content: center;
     color: rgb(26, 26, 26);
     text-align: center;
-    /* text-shadow: 1px 1px 2px #202020;
-    -webkit-text-stroke: 1px black; */
 }
 
 .main-subtitle{
+    text-align: center;
+    line-height: 1.8rem;
+    margin-top: 1rem;
     font-weight: 400;
-    width: 320px;
 }
 
 .title-emphasis{
     font-family: "Poppins", sans-serif;
+}
+
+.subtitle-catch-phrase{
+    font-size: 1.5rem;
+    margin-top: 3rem;
+    text-align: center;
+    font-weight: 500;
 }
 
 .nav-title a{
@@ -82,14 +93,13 @@ main {
     color: #62cc90;
 }
 
-header {
-    width: 100vw;
-    padding: .5rem .3rem;
-    position: fixed;
+.header {
+    position: absolute;
     top: 0;
     right: 0;
+    width: 100vw;
+    padding: .5rem .3rem;
     display: flex;
-    position: relative;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
@@ -145,7 +155,8 @@ header > div > form {
     flex-wrap: wrap;
     gap: .3rem;
     position: absolute;
-    top: -300px;
+    left: 0;
+    top: -110px;
     transition: all .3s;
     z-index: 9;
 }
@@ -181,9 +192,6 @@ li {
 /*//////FEED POSTS INFROMATION/////////////////*/
 
 .postsSection{
-    display: grid;
-    min-height: 100vh;
-    place-content: center;
     z-index: 1;
 }
 
@@ -210,8 +218,8 @@ li {
     z-index: 1;
 }
 
-span {
-    font-size: 2rem;
+.post-title-profile {
+    font-size: 3rem;
     letter-spacing: -15px;
     text-align: center;
     color: white;
@@ -228,22 +236,17 @@ span {
     justify-content: center;
 }
 
-li:hover span{
+li:hover .post-title-profile{
     cursor: pointer;
     letter-spacing: 0px;
     top: 0;
 }
 
-.login-container,
-.sign-up-container {
-    min-height: 100vh;
-    display: grid;
-    place-content: center;
-}
-
 .login-signup-form{
+    width: 300px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 1.5rem;
     width: 300px;
     padding: 1rem 1rem;
@@ -496,42 +499,15 @@ li:hover span{
     outline: 1px solid rgb(31, 28, 28);
 }
 
-.post-title-profile {
-    font-size: 1rem;
-    letter-spacing: 0px;
-    text-align: center;
-    color: white;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-    transition: all .3s ease;
-    background-color: rgba(0, 0, 0, 0.374);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-li:hover .post-title-profile{
-    cursor: pointer;
-    top: 0;
-}
-
 /*////////////////////////INDIVIDUAL POST INFORMATION//////////////////////////////*/
-.post-content-container{
-    place-content: center;
-    min-height: 100vh;
-    display: grid;
-}
 .post-container{
     display: grid;
+    grid-template-columns: repeat(1, 1fr);
     gap: 1rem;
 }
 
 .content-container{
-    width: 250px;
+    width: 300px;
     display: flex;
     flex-direction: column;
     border: 1px solid #202020;
@@ -550,7 +526,7 @@ li:hover .post-title-profile{
 picture {
     display: block;
     width: 100%;
-    height: 250px;
+    height: 300px;
     background-color: white;
 }
 
@@ -600,6 +576,10 @@ picture {
 
 /*////////////////MEDIA QUERIES///////////////////*/
 @media only screen and (min-width: 425px) {
+    .login-signup-form{
+        width: 400px;
+        height:auto;
+    }
     .nav-title a,
     .btn,
     .pp-img-upload-btn{
@@ -625,6 +605,10 @@ picture {
 }
 
 @media only screen and (min-width: 768px) {
+    .login-signup-form{
+        width: 500px;
+        height:auto;
+    }
     .btn,
     .pp-img-upload-btn{
     font-size: 1.6rem;
@@ -634,7 +618,7 @@ picture {
         margin-bottom: 0;
     }
     .main-title{
-        font-size: 6rem;
+        font-size: 4rem;
     }
 
     .postsList{
@@ -692,11 +676,12 @@ picture {
     }
 
     .post-container{
+        grid-template-columns: repeat(2, 1fr);
         padding-top: 3rem;
     }
 
     .content-container{
-        width: 450px;
+        width: 400px;
     }
 
     picture{

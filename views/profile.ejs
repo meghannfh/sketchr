@@ -11,205 +11,202 @@
     <title>profile</title>
 </head>
 <body>
-    <main>
-        <header>
-            <div class="profile-top-details">
-                <div class="top-title-name">
-                  <h1 class="nav-title"><a href="/">Sketchr</a></h1>
-                  <p>Welcome <%= user.userName %>!</p>
-                </div>
-            </div>
-        
-            <div class="btn-container">
-              <div class="btn-container mobile-nav-btns">
-                <button class="btn">new post</button>
-                <a href="/feed"><button class="btn">feed</button></a>
-                <a href="/logout"><button class="btn">logout</button></a>
+  <header class="header">
+    <div class="profile-top-details">
+      <div class="top-title-name">
+        <h1 class="nav-title"><a href="/">Sketchr</a></h1>
+        <p>Welcome <%= user.userName %>!</p>
+      </div>
+    </div>
+
+    <div class="btn-container">
+      <div class="btn-container mobile-nav-btns">
+        <button class="btn">new post</button>
+        <a href="/feed"><button class="btn">feed</button></a>
+        <a href="/logout"><button class="btn">logout</button></a>
+      </div>
+      <div class="btn-container desktop-nav-btns hide">
+        <div>
+          <button class="btn" id="add"><i class="fa-solid fa-plus"></i></button>
+          <p class="btn-subtitle-desktop">new</p>
+        </div>
+        <div>
+          <a href="/feed"><button class="btn" id="add"><i class="fa-solid fa-scroll"></i></button></a>
+          <p class="btn-subtitle-desktop">feed</p>
+        </div>
+        <div>
+          <a href="/logout"><button class="btn" id="add"><i class="fa-solid fa-right-from-bracket"></i></button></a>
+          <p class="btn-subtitle-desktop">logout</p>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section>
+    <form action="/post/addPost" enctype="multipart/form-data" class="make-post-form" method="POST" id="form">
+      <div>
+        <label for="name">prompt</label>
+        <input type="text" name="prompt" class="input" placeholder="prompt">
+      </div>
+
+      <div>
+        <label for="media">media</label>
+        <div class="container">
+          <select name="media" id="media">
+            <option value="">select media type</option>
+            <option value="graphite">graphite (pencil)</option>
+            <option value="ballpoint pen">ballpoint pen</option>
+            <option value="brush pen">brush pen</option>
+            <option value="marker">marker</option>
+            <option value="colored pencils">colored pencils</option>
+            <option value="brush markers">brush markers</option>
+            <option value="paint markers">paint markers</option>
+            <option value="watercolor">watercolor</option>
+            <option value="acrylic">acrylic</option>
+            <option value="mixed media">mixed media</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label for="size">size</label>
+        <div class="container">
+          <select name="size" id="size">
+            <option value="">select size</option>
+            <option value="2 x 2">2" x 2" sticker</option>
+            <option value="4 x 6">4" x 6" postcard</option>
+            <option value="5 x 7">5" x 7" postcard</option>
+            <option value="6.9 x 9.8">6.9" x 9.8" B5</option>
+            <option value="8.27 x 11.69">8.27" x 11.69" A4</option>
+            <option value="8.5 x 11">8.5" x 11" letter</option>
+            <option value="8.5 x 14">8.5" x 14" legal</option>
+            <option value="9.8 x 13.9">9.8" x 13.9" B4</option>
+            <option value="11 x 17">11" x 17" tabloid</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label for="canvas">canvas</label>
+        <div class="container">
+          <select name="canvas" id="canvas">
+            <option value="">select canvas type</option>
+            <option value="sketchbook paper">sketchbook paper</option>
+            <option value="marker paper">marker paper</option>
+            <option value="canvas">canvas</option>
+            <option value="watercolor hard press">watercolor hard press</option>
+            <option value="watercolor cold press">watercolor cold press</option>
+            <option value="bristol">bristol</option>
+            <option value="charcoal paper">charcoal paper</option>
+            <option value="iPad">iPad</option>
+            <option value="tablet">tablet</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label for="description">description</label>
+        <textarea class="input" name="description" placeholder="description"></textarea>
+      </div>
+
+      <div>
+        <label for="cloudinaryId">upload image</label>
+        <input type="file" name="file" class="input">
+      </div>
+      
+      <button type="submit" value="Upload" class="btn" id="btn">submit</button>
+    </form>
+  </section>
+  <main>
+    <section class="profile-content-container">
+      <section class="profile-user-info">
+        <!--Profile posts tracker inside profile-user-info div above profile-posts-tracker-->
+        <div class="user-pp-container">
+          <% if (locals.messages.errors) { %> 
+              <% messages.errors.forEach( el => { %>
+                  <div class="alert alert-danger"><%= el.msg %></div>
+              <% }) %> 
+          <% } %> 
+          <% if (locals.messages.info) { %> 
+              <% messages.info.forEach( el => { %>
+                  <div class="alert alert-info"><%= el.msg %></div>
+              <% }) %>
+          <% } %>
+          <div class="user-info">
+              <div>
+                  <div class="profile-img-container">
+                    <% if(user.profileImage) {%>
+                      <img src="<%= user.profileImage %>" alt="user profile picture" class="user-info-img">
+                    <% } else {%>
+                        <h5 class="user-info-placeholder-img"><%= user.userName.slice(0, 1) %></h5>
+                    <% } %>
+                    <p class="edit-img-overlay edit-img-btns" id="edit-img-btn">edit</p>
+                  </div>
+                  <div class="edit-profile-img hide" id="edit-profile-img-form">
+                      <form method="POST" action="/edit/<%= user.id %>?_method=PUT" enctype="multipart/form-data">
+                          <input type="file" name="profileImage" class="input">
+                          <button type="submit" value="Upload" class="btn pp-img-upload-btn" id="btn"><i class="fa-solid fa-file-arrow-up"></i>upload</button>
+                      </form>
+                      <button type="button" id="undo-edit-img" class="edit-img-btns btn pp-img-upload-btn"><i class=" fa-solid fa-rotate-left"></i>undo</button>
+                      <form method="POST" action="/delete/<%= user.id %>?_method=PUT" enctype="multipart/form-data">
+                          <button type="submit" class="btn pp-img-upload-btn"><i class="fa-solid fa-trash"></i>delete</button>
+                      </form>
+                  </div>
               </div>
-              <div class="btn-container desktop-nav-btns hide">
-                <div>
-                  <button class="btn" id="add"><i class="fa-solid fa-plus"></i></button>
-                  <p class="btn-subtitle-desktop">new</p>
-                </div>
-                <div>
-                  <a href="/feed"><button class="btn" id="add"><i class="fa-solid fa-scroll"></i></button></a>
-                  <p class="btn-subtitle-desktop">feed</p>
-                </div>
-                <div>
-                  <a href="/logout"><button class="btn" id="add"><i class="fa-solid fa-right-from-bracket"></i></button></a>
-                  <p class="btn-subtitle-desktop">logout</p>
-                </div>
+              <div>
+                <h6 class="user-name"><%= user.userName %></h6>
+                <h6 class="user-joined-date">Joined <%= (user.joined).toLocaleString('default', {month: 'long'}) %> <%= (user.joined).getFullYear() %></h6>
+                <!-- <%if(user.id){ %>
+                <h6 class="follow-btn">+ follow</h6>
+                <%}%> -->
               </div>
-            </div>
-        
-          </header>
-          <section>
-            <form action="/post/addPost" enctype="multipart/form-data" class="make-post-form" method="POST" id="form">
-                <div>
-                  <label for="name">prompt</label>
-                  <input type="text" name="prompt" class="input" placeholder="prompt">
-                </div>
-        
-                <div>
-                  <label for="media">media</label>
-                  <div class="container">
-                    <select name="media" id="media">
-                      <option value="">select media type</option>
-                      <option value="graphite">graphite (pencil)</option>
-                      <option value="ballpoint pen">ballpoint pen</option>
-                      <option value="brush pen">brush pen</option>
-                      <option value="marker">marker</option>
-                      <option value="colored pencils">colored pencils</option>
-                      <option value="brush markers">brush markers</option>
-                      <option value="paint markers">paint markers</option>
-                      <option value="watercolor">watercolor</option>
-                      <option value="acrylic">acrylic</option>
-                      <option value="mixed media">mixed media</option>
-                    </select>
-                  </div>
-                </div>
-        
-                <div>
-                  <label for="size">size</label>
-                  <div class="container">
-                    <select name="size" id="size">
-                      <option value="">select size</option>
-                      <option value="2 x 2">2" x 2" sticker</option>
-                      <option value="4 x 6">4" x 6" postcard</option>
-                      <option value="5 x 7">5" x 7" postcard</option>
-                      <option value="6.9 x 9.8">6.9" x 9.8" B5</option>
-                      <option value="8.27 x 11.69">8.27" x 11.69" A4</option>
-                      <option value="8.5 x 11">8.5" x 11" letter</option>
-                      <option value="8.5 x 14">8.5" x 14" legal</option>
-                      <option value="9.8 x 13.9">9.8" x 13.9" B4</option>
-                      <option value="11 x 17">11" x 17" tabloid</option>
-                    </select>
-                  </div>
-                </div>
-        
-                <div>
-                  <label for="canvas">canvas</label>
-                  <div class="container">
-                    <select name="canvas" id="canvas">
-                      <option value="">select canvas type</option>
-                      <option value="sketchbook paper">sketchbook paper</option>
-                      <option value="marker paper">marker paper</option>
-                      <option value="canvas">canvas</option>
-                      <option value="watercolor hard press">watercolor hard press</option>
-                      <option value="watercolor cold press">watercolor cold press</option>
-                      <option value="bristol">bristol</option>
-                      <option value="charcoal paper">charcoal paper</option>
-                      <option value="iPad">iPad</option>
-                      <option value="tablet">tablet</option>
-                    </select>
-                  </div>
-                </div>
-        
-                <div>
-                  <label for="description">description</label>
-                  <textarea class="input" name="description" placeholder="description"></textarea>
-                </div>
-          
-                <div>
-                  <label for="cloudinaryId">upload image</label>
-                  <input type="file" name="file" class="input">
-                </div>
-                
-                <button type="submit" value="Upload" class="btn" id="btn">submit</button>
-            </form>
-
-              <section class="profile-content-container">
-                <section class="profile-user-info">
-                  <div class="user-pp-container">
-                    <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
-                      <div class="alert alert-danger"><%= el.msg %></div>
-                      <% }) %> <% } %> <% if (locals.messages.info) { %> <%
-                      messages.info.forEach( el => { %>
-                      <div class="alert alert-info"><%= el.msg %></div>
-                      <% }) %> <% } %>
-
-                      <div class="user-info">
-                        <div>
-                          <div class="profile-img-container">
-                              <% if(user.profileImage) {%>
-                                <img src="<%= user.profileImage %>" alt="user profile picture" class="user-info-img">
-                              <% } else {%>
-                                  <h5 class="user-info-placeholder-img"><%= user.userName.slice(0, 1) %></h5>
-                              <% } %>
-                              <p class="edit-img-overlay edit-img-btns" id="edit-img-btn">edit</p>
-                          </div>
-  
-                          <div class="edit-profile-img hide" id="edit-profile-img-form">
-                            <form method="POST" action="/edit/<%= user.id %>?_method=PUT" enctype="multipart/form-data">
-  
-                              <input type="file" name="profileImage" class="input">
-                              <button type="submit" value="Upload" class="btn pp-img-upload-btn" id="btn"><i class="fa-solid fa-file-arrow-up"></i>upload</button>
-                            </form>
-                            <button type="button" id="undo-edit-img" class="edit-img-btns btn pp-img-upload-btn"><i class=" fa-solid fa-rotate-left"></i>undo</button>
-                            <form method="POST" action="/delete/<%= user.id %>?_method=PUT" enctype="multipart/form-data">
-                              <button type="submit" class="btn pp-img-upload-btn"><i class="fa-solid fa-trash"></i>delete</button>
-                            </form>
-                          </div>
-                            
-                        </div>
-                        <div>
-                          <h6 class="user-name"><%= user.userName %></h6>
-                          <h6 class="user-joined-date">Joined <%= (user.joined).toLocaleString('default', {month: 'long'}) %> <%= (user.joined).getFullYear() %></h6>
-                          <!-- <%if(user.id){ %>
-                          <h6 class="follow-btn">+ follow</h6>
-                          <%}%> -->
-                        </div>
-                      </div>
-
-                  </div>
-
-                    <div class="profile-posts-tracker">
-                        <h1><%= user.userName %>'s <%= new Date().toLocaleString('default', {month: 'long'}) %> streak</h1>
-                        <div class="streak-container">
-                          <ul class="days-month" id="days-month">
-                            <% let contributionDates = [] %>
-                            <% todaysDate = new Date() %>
-                            <% currMonth = todaysDate.getMonth()+1 %>
-                            <% currYear = todaysDate.getFullYear() %>
-                            <% days = new Date(currYear, currMonth, 0).getDate() %>
-                            <% for(var i=0; i <posts.length; i++) {%>
-                              <% if((posts[i].createdAt).getMonth()+1 === currMonth) {%>
-                                <% contributionDates.push((posts[i].createdAt).getDate())%>
-                              <% } %>
-                            <% } %>
-
-                            <% dates = new Set(contributionDates) %>
-                              <% for(var i=1; i<=days; i++) {%>
-                                  <% if(dates.has(i)) {%>
-                                    <li class="days green" id="<%= i%>"></li>
-                                  <% } else {%>
-                                    <li class="days" id="<%= i%>"></li>
-                                  <% } %>
-                              <% } %>
-                          </ul>
-                        </div>
-                    </div>
-                </section>
-                <section class="profile-posts">
-                  <h5>Your sketchbook</h5>
-                    <!-- <h5><%= new Date().toLocaleString('default', {month: 'long'}) %>'s sketches</h5> -->
-                    <section class="postsSection-profile">
-                      <ul class="postsList-profile">
-                          <% for(var i=0; i <posts.length; i++) {%>
-                          <li class="post-profile">
-                            <a href="/post/<%= posts[i]._id%>">
-                              <img src="<%= posts[i].image %>">
-                              <span class="post-title-profile"><%= (posts[i].createdAt).toLocaleString('default', { month: 'short' })%>/<%= (posts[i].createdAt).getDate()%></span>
-                            </a>
-                          </li>
-                          <% } %>
-                      </ul>
-                    </section>
-                </section>
-              </section>
-            </section>
-      </main>
-    
-    <script src="/js/showForm.js"></script>
+          </div>
+        </div>
+        <!--Profile posts tracker inside profile-user-info div below user-pp-container-->
+        <div class="profile-posts-tracker">
+          <h1><%= user.userName %>'s <%= new Date().toLocaleString('default', {month: 'long'}) %> streak</h1>
+          <div class="streak-container">
+              <ul class="days-month" id="days-month">
+                  <% let contributionDates = [] %>
+                  <% todaysDate = new Date() %>
+                  <% currMonth = todaysDate.getMonth()+1 %>
+                  <% currYear = todaysDate.getFullYear() %>
+                  <% days = new Date(currYear, currMonth, 0).getDate() %>
+                  <% for(var i=0; i <posts.length; i++) {%>
+                      <% if((posts[i].createdAt).getMonth()+1 === currMonth) {%>
+                          <% contributionDates.push((posts[i].createdAt).getDate())%>
+                      <% } %>
+                  <% } %>
+                  <% dates = new Set(contributionDates) %>
+                  <% for(var i=1; i<=days; i++) {%>
+                      <% if(dates.has(i)) {%>
+                          <li class="days green" id="<%= i%>"></li>
+                      <% } else {%>
+                          <li class="days" id="<%= i%>"></li>
+                      <% } %>
+                  <% } %>
+              </ul>
+          </div>
+        </div>
+      </section>
+      <!-- Sketchbook title here -->
+      <section class="profile-posts">
+        <h5>Your sketchbook</h5>
+        <!-- <h5><%= new Date().toLocaleString('default', {month: 'long'}) %>'s sketches</h5> -->
+        <section class="postsSection-profile">
+            <ul class="postsList-profile">
+                <% for(var i=0; i <posts.length; i++) {%>
+                    <li class="post-profile">
+                        <a href="/post/<%= posts[i]._id%>">
+                            <img src="<%= posts[i].image %>">
+                            <span class="post-title-profile"><%= (posts[i].createdAt).toLocaleString('default', { month: 'short' })%>/<%= (posts[i].createdAt).getDate()%></span>
+                        </a>
+                    </li>
+                <% } %>
+            </ul>
+        </section>
+      </section>
+    </section>
+  </main>
+<script src="/js/showForm.js"></script>
 </body>
 </html>
