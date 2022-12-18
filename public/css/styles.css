@@ -74,6 +74,11 @@ main {
 
 .title-emphasis{
     font-family: "Poppins", sans-serif;
+    color: whitesmoke;
+}
+
+.subtitle-emphasis{
+    font-weight: 700;
 }
 
 .subtitle-catch-phrase{
