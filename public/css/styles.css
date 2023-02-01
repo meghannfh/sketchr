@@ -147,8 +147,12 @@ header > div > form {
     cursor: pointer;
 }
 
+.login-signup {
+    color: white;
+}
+
 .login-signup:hover {
-    color: antiquewhite;
+    color: #E4B2CA;
 }
 
 .make-post-form {
@@ -248,6 +252,7 @@ li:hover .post-title-profile{
 }
 
 .login-signup-form{
+    color: white;
     width: 300px;
     display: flex;
     flex-direction: column;
@@ -258,13 +263,17 @@ li:hover .post-title-profile{
     margin: 0 .5rem;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    background-color: rgba(86,195,178,1);
+    background-color: rgb(33, 33, 33);
 }
 
 .login-signup-form > div {
     display: flex;
     flex-direction: column;
     gap: .3rem;
+}
+
+.login-signup-form label {
+    font-size: 1.6rem;
 }
 
 .emailHelp{
@@ -611,8 +620,8 @@ picture {
 
 @media only screen and (min-width: 768px) {
     .login-signup-form{
-        width: 500px;
-        height:auto;
+        width: 400px;
+        height:480px;
     }
     .btn,
     .pp-img-upload-btn{
