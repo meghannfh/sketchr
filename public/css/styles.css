@@ -621,7 +621,6 @@ picture {
 @media only screen and (min-width: 768px) {
     .login-signup-form{
         width: 400px;
-        height:480px;
     }
     .btn,
     .pp-img-upload-btn{
