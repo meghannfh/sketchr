@@ -11,6 +11,8 @@ const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
 const postRoutes = require("./routes/posts");
 
+//https://www.youtube.com/watch?v=VsUzmlZfYNg use for reference
+
 //Use .env file in config folder
 require('dotenv').config({ path: './config/.env' });
 

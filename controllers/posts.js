@@ -3,6 +3,10 @@ const Post = require('../models/Post')
 const User = require('../models/User')
 const multer = require('multer')
 
+//we're wrapping all of our functions in an object so
+//when we import these functions in our routers
+//we need to use dot notation to access each individual function
+//in their respective routes
 module.exports = {
     getProfile: async (req, res) => {
         try {
@@ -15,6 +19,7 @@ module.exports = {
     getFeed: async (req, res) => {
         try{
             const posts = await Post.find().sort({ createdAt: 'desc' }).lean()
+            // res.json(posts)
             res.render('feed.ejs', { posts: posts, user: req.user })
         }catch(err){
             console.log(err)
